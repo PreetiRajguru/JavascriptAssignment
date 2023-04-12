@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Javascript Form</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+  <link rel="stylesheet" href="Form.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+  <form id="myForm">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <h2 class="text-left mb-4">Create booking</h2><br>
+
+          <!-- Booking name -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Booking
+                Name</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group"> Booking Name <br><br>
+                <input type="text" class="form-control" id="bookingname" placeholder="Description of Shipment"
+                  autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Consignee -->
+          <div class="row">
+            <div class="col-md-4"><label class="mb-2 text-right font-weight-bold">Involved
+                Parties</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <div>
+                  Consignee &nbsp; <i class="bi bi-question-circle-fill"></i> <br><br>
+
+                  <select class="form-select" aria-label="Default select example" required id="consignee">
+                    <option selected>Select Consignee</option>
+                    <option value="One">One</option>
+                    <option value="Two">Two</option>
+                    <option value="Three">Three</option>
+                  </select>
+
+                </div>
+                <div>
+                  <br>
+                  Supplier<br><br>
+
+                  <select class="form-select" aria-label="Default select example" required id="supplier">
+                    <option selected>Select Supplier</option>
+                    <option value="One">One</option>
+                    <option value="Two">Two</option>
+                    <option value="Three">Three</option>
+                  </select>
+                  <br>
+                  <a href="a#">Create New Supplier</a>
+                  <br><br>
+                </div>
+
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" value="exw">
+                  <label class="btn btn-secondary" for="option1"
+                    style="background-color: white; border-color: rgb(157, 154, 154); color: black;">EXW</label>
+
+                  <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" value="fob">
+                  <label class="btn btn-secondary" for="option2"
+                    style="background-color: white; border-color: rgb(157, 154, 154); color: black;">FOB</label>
+
+                  <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" value="fca">
+                  <label class="btn btn-secondary" for="option3"
+                    style="background-color: white; border-color: rgb(157, 154, 154); color: black;">FCA</label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Cargo Details -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Cargo
+                Details</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <p class="nav-link active btn-block" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                      type="button" role="tab" aria-controls="home" aria-selected="true">Less than Container</p>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <p class="nav-link btn-block" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                      type="button" role="tab" aria-controls="profile" aria-selected="false">Full Containers</p>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="container">
+                      <div class="row row-cols-2">
+                        <div class="col"><br>Total Weight<br><input type="text" class="form-control" id="totalweight"
+                            placeholder="                                                       kg" autocomplete="off">
+                        </div>
+                        <div class="col"><br>Total Volume<br><input type="text" class="form-control" id="totalvolume"
+                            placeholder="                                                    cbm" autocomplete="off">
+                        </div>
+                        <div class="col"><br>Package Type<br><select class="form-select"
+                            aria-label="Default select example" required id="packagetype">
+                            <option selected>Select Package Type</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select></div>
+                        <div class="col"><br>Total Quantity<br><input type="text" class="form-control"
+                            id="totalquantity" autocomplete="off">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="container">
+                      <div class="row row-cols-2">
+
+                        <div class="col"><br>Number of Containers<br><input type="text" class="form-control"
+                            id="nocontainers" autocomplete="off"> </div>
+                        <div class="col"><br>Container Type<br><select class="form-select"
+                            aria-label="Default select example" required id="fullcontainertype" autocomplete="off">
+                            <option selected>40 ft</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select> </div>
+
+
+
+                        <div class="col"><br>Total Weight<br><input type="text" class="form-control"
+                            id="fulltotalweight" placeholder="                                                       kg"
+                            autocomplete="off"> </div>
+                        <div class="col"><br>Total Volume<br><input type="text" class="form-control"
+                            id="fulltotalvolume" placeholder="                                                    cbm"
+                            autocomplete="off">
+                        </div>
+                        <div class="col"><br>Package Type<br><select class="form-select"
+                            aria-label="Default select example" required id="fullpackagetype">
+                            <option selected>Select Package Type</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select></div>
+                        <div class="col"><br>Total Quantity<br><input type="text" class="form-control"
+                            id="fulltotalquantity" autocomplete="off">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Origin Address  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Origin
+                Address</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <b>Origin Address</b> <br><br>
+                <input type="search" class="form-control search-icon" id="originAddress"
+                  placeholder="Search for Origin Address" autocomplete="off" list="addresses">
+                <datalist id="addresses">
+                  <option value="Default value 1">
+                  <option value="Default value 2">
+                  <option value="Default value 3">
+                </datalist>
+                <br>
+                <a href="a#">Create New Origin Address</a>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Origin Port  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Origin Port</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                Port <br><br>
+                <select class="form-select" aria-label="Default select example" required id="port">
+                  <option selected>Select Port</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Origin Trucking Services  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Origin Trucking
+                Services</label>
+              <br><br>
+              <p style="color: rgb(110, 111, 112);">Select 'Yes' and your Flexport will collect your cargo and deliver
+                it
+                to the origin port.
+                This will incur a charge that is added as an individual line item on your estimate.</p>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <b>Will you need Flexport Origin Trucking Services (origin to port)</b>
+                <br><br>
+
+                <input type="radio" class="btn-check" name="optionsyesno" id="options" autocomplete="off" value="yes">
+                <label class="btn btn-secondary" for="options"
+                  style="background-color: white; border-color: rgb(157, 154, 154); color: black;">Yes</label>
+
+                <input type="radio" class="btn-check" name="optionsyesno" id="optionss" autocomplete="off" value="no">
+                <label class="btn btn-secondary" for="optionss"
+                  style="background-color: white; border-color: rgb(157, 154, 154); color: black;">No</label>
+
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Destination Address  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Destination
+                Address</label>
+              <br><br>
+              <p style="color: rgb(110, 111, 112);">The destination addresses requires access to a dock to unload the
+                shipment.</p>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <b>Destination Address</b> <br><br>
+
+                <input type="search" class="form-control search-icon" id="destinationAddress"
+                  placeholder="Search for Destination Address" autocomplete="off" list="addresses">
+                <datalist id="addresses">
+                  <option value="Default value 1">
+                  <option value="Default value 2">
+                  <option value="Default value 3">
+                </datalist>
+                <br>
+                <a href="a#">Create New Destination Address</a>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Products to be Shipped  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Products to be
+                Shipped</label>
+              <br><br>
+              <p style="color: rgb(110, 111, 112);">At least one product is required.</p>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+
+                <div class="text-center">
+                  <img src="image.png" class="rounded" alt="...">
+                  <br>
+                  <p style="font-size: 20px;"><b>Add products to your shipment here</b></p>
+                  <br>
+                  <p style="color: rgb(87, 87, 84);">
+                    To add products to your shipment, start by adding products <br>
+                    from your Shopify catalog or manually adding them.</p>
+                  <br>
+                  <button type="button" class="btn" style="background-color: white; border-color: rgb(137, 135, 135);"
+                    onclick="showTextbox()">Add
+                    Products</button>
+                  <br><br>
+                  <input type="text" id="myTextbox" style="margin-left: 225px;" autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Hazardous Materials  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Hazardous
+                Materials</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <b>Do any of your products contain the following</b> <br><br>
+
+                <label>
+                  <input type="checkbox" name="option" value="Batteries"> <b style="color: rgb(70, 70, 71);">
+                    Batteries</b>
+                </label>
+                <br><br>
+                <label>
+                  <input type="checkbox" name="option" value="Hazardous Materials"> <b
+                    style="color: rgb(70, 70, 71);">Hazardous
+                    Materials</b>
+                </label>
+                <br><br>
+                <label>
+                  <input type="checkbox" name="option" value="Creams, Liquids, Powder"> <b
+                    style="color: rgb(70, 70, 71);">Creams,
+                    Liquids, Powder</b>
+                </label>
+                <br><br>
+                <label>
+                  <input type="checkbox" name="option" value="None of the above"> <b
+                    style="color: rgb(70, 70, 71);">None of the
+                    above</b>
+                </label>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Origin Cutoff Date  -->
+          <div class="row">
+            <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Origin Cutoff
+                Date</label>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <b>When will your cargo be ready ?</b> <br><br>
+                <p>To provide you the best rates, you must select a date within the next 6 weeks.</p><br>
+                <div style="margin-left: 200px;">
+                  <input type="text" name="daterange" id="text_date_range" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr">
+
+          <!-- Submit Button  -->
+          <div>
+            <button type="submit" class="float-end"
+              style="background-color: hsl(165deg 100% 25.1%); border-color: rgba(240, 248, 255, 0); color: white; height: 42px; width: 210px; border-radius: 5px;">Submit
+              Booking Request</button>
+            <br><br>
+          </div>
+
+        </div>
+      </div>
+  </form>
+
+  <script>
+    $(function () {
+      var today = new Date();
+      var currentYear = today.getFullYear();
+      var currentMonth = today.getMonth();
+      var currentDay = today.getDate();
+
+      $('input[name="daterange"]').daterangepicker({
+        opens: 'left',
+        minDate: new Date(currentYear, currentMonth, currentDay),
+        maxDate: new Date(currentYear, currentMonth + 1, currentDay),
+        placeholder: "select date range"
+      })
+    });
+    var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+    triggerTabList.forEach(function (triggerEl) {
+      var tabTrigger = new bootstrap.Tab(triggerEl)
+
+      triggerEl.addEventListener('click', function (event) {
+        event.preventDefault()
+        tabTrigger.show()
+      })
+    })
+
+    function showTextbox() {
+      var textbox = document.getElementById("myTextbox");
+      textbox.style.display = "block"; // Show the textbox
+    }
+
+    const myForm = document.getElementById("myForm");
+    myForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      console.log("Booking Name : " + document.getElementById("bookingname").value);
+
+      const selectConsignee = document.getElementById("consignee");
+      const selectedConsignee = selectConsignee.value;
+      console.log("Consignee : " + selectedConsignee);
+
+      const selectSupplier = document.getElementById("supplier");
+      const selectedSupplier = selectSupplier.value;
+      console.log("Supplier : " + selectedSupplier);
+
+      console.log("Less Than Container");
+      console.log("Total Weight : " + document.getElementById("totalweight").value + "kg");
+      console.log("Total Volume : " + document.getElementById("totalvolume").value + "cbm");
+      const selectPackage = document.getElementById("packagetype");
+      const selectedType = selectPackage.value;
+      console.log("Package Type : " + selectedType);
+      console.log("Total Quantity : " + document.getElementById("totalquantity").value);
+
+      console.log("Full Containers");
+      console.log("Number of Containers : " + document.getElementById("nocontainers").value);
+      const selectContainerType = document.getElementById("fullcontainertype");
+      const selectedCType = selectContainerType.value;
+      console.log("Container Type : " + selectedCType);
+      console.log("Total Weight : " + document.getElementById("fulltotalweight").value + "kg");
+      console.log("Total Volume : " + document.getElementById("fulltotalvolume").value + "cbm");
+      const selectPackageType = document.getElementById("fullpackagetype");
+      const selectedPType = selectPackageType.value;
+      console.log("Package Type : " + selectedPType);
+      console.log("Total Quantity : " + document.getElementById("fulltotalquantity").value);
+
+      console.log("Origin Address : " + document.getElementById("originAddress").value);
+
+      const selectPort = document.getElementById("port");
+      const selectedPort = selectPort.value;
+      console.log("Port : " + selectedPort);
+
+      console.log("Destination Address : " + document.getElementById("destinationAddress").value);
+
+      console.log("Added Products : " + document.getElementById("myTextbox").value);
+
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          console.log("Hazardous Materials : " + checkbox.value);
+        };
+      });
+
+      const radioVal = document.querySelector('input[name="options"]:checked');
+      if (radioVal && radioVal.value) {
+        console.log("Incoterms : " + radioVal.value)
+      }
+
+      const radioValue = document.querySelector('input[name="optionsyesno"]:checked');
+      if (radioValue && radioValue.value) {
+        console.log("Origin to Port ? : " + radioValue.value)
+      }
+
+      const text_date_range = document.getElementById("text_date_range").value;
+      console.log("Date Range : " + text_date_range)
+
+      myForm.reset();
+    });
+  </script>
+
+</body>
+
+</html>
