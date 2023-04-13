@@ -30,7 +30,7 @@
             <div class="col-md-8">
               <div class="form-group"> Booking Name <br><br>
                 <input type="text" class="form-control" id="bookingname" placeholder="Description of Shipment"
-                  autocomplete="off">
+                  autocomplete="off" required>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
                 <div>
                   Consignee &nbsp; <i class="bi bi-question-circle-fill"></i> <br><br>
 
-                  <select class="form-select" aria-label="Default select example" required id="consignee">
+                  <select class="form-select" aria-label="Default select example" id="consignee" required>
                     <option selected>Select Consignee</option>
                     <option value="One">One</option>
                     <option value="Two">Two</option>
@@ -58,7 +58,7 @@
                   <br>
                   Supplier<br><br>
 
-                  <select class="form-select" aria-label="Default select example" required id="supplier">
+                  <select class="form-select" aria-label="Default select example" id="supplier" required>
                     <option selected>Select Supplier</option>
                     <option value="One">One</option>
                     <option value="Two">Two</option>
@@ -107,21 +107,21 @@
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="container">
                       <div class="row row-cols-2">
-                        <div class="col"><br>Total Weight<br><input type="text" class="form-control" id="totalweight"
-                            placeholder="                                                       kg" autocomplete="off">
+                        <div class="col"><br>Total Weight<br><input type="number" min="0" class="form-control" id="totalweight"
+                            placeholder="                                                   kg" autocomplete="off" required>
                         </div>
-                        <div class="col"><br>Total Volume<br><input type="text" class="form-control" id="totalvolume"
-                            placeholder="                                                    cbm" autocomplete="off">
+                        <div class="col"><br>Total Volume<br><input type="number" min="0" class="form-control" id="totalvolume"
+                            placeholder="                                                cbm" autocomplete="off" required>
                         </div>
                         <div class="col"><br>Package Type<br><select class="form-select"
-                            aria-label="Default select example" required id="packagetype">
+                            aria-label="Default select example" id="packagetype" required>
                             <option selected>Select Package Type</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                           </select></div>
-                        <div class="col"><br>Total Quantity<br><input type="text" class="form-control"
-                            id="totalquantity" autocomplete="off">
+                        <div class="col"><br>Total Quantity<br><input type="number" min="0" class="form-control"
+                            id="totalquantity" autocomplete="off" required>
                         </div>
                       </div>
                     </div>
@@ -131,34 +131,34 @@
                     <div class="container">
                       <div class="row row-cols-2">
 
-                        <div class="col"><br>Number of Containers<br><input type="text" class="form-control"
-                            id="nocontainers" autocomplete="off"> </div>
+                        <div class="col"><br>Number of Containers<br><input type="number" min="0" class="form-control"
+                            id="nocontainers" autocomplete="off" required> </div>
                         <div class="col"><br>Container Type<br><select class="form-select"
-                            aria-label="Default select example" required id="fullcontainertype" autocomplete="off">
+                            aria-label="Default select example" id="fullcontainertype" autocomplete="off" required>
                             <option selected>40 ft</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">50 ft</option>
+                            <option value="2">20 ft</option>
+                            <option value="3">30 ft</option>
                           </select> </div>
 
 
 
-                        <div class="col"><br>Total Weight<br><input type="text" class="form-control"
-                            id="fulltotalweight" placeholder="                                                       kg"
-                            autocomplete="off"> </div>
-                        <div class="col"><br>Total Volume<br><input type="text" class="form-control"
-                            id="fulltotalvolume" placeholder="                                                    cbm"
-                            autocomplete="off">
+                        <div class="col"><br>Total Weight<br><input type="number" min="0" class="form-control"
+                            id="fulltotalweight" placeholder="                                                   kg"
+                            autocomplete="off" required> </div>
+                        <div class="col"><br>Total Volume<br><input type="number" min="0" class="form-control"
+                            id="fulltotalvolume" placeholder="                                                cbm"
+                            autocomplete="off" required>
                         </div>
                         <div class="col"><br>Package Type<br><select class="form-select"
-                            aria-label="Default select example" required id="fullpackagetype">
+                            aria-label="Default select example" id="fullpackagetype" required>
                             <option selected>Select Package Type</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                           </select></div>
-                        <div class="col"><br>Total Quantity<br><input type="text" class="form-control"
-                            id="fulltotalquantity" autocomplete="off">
+                        <div class="col"><br>Total Quantity<br><input type="number" min="0" class="form-control"
+                            id="fulltotalquantity" autocomplete="off" required>
                         </div>
                       </div>
                     </div>
@@ -178,7 +178,7 @@
               <div class="form-group">
                 <b>Origin Address</b> <br><br>
                 <input type="search" class="form-control search-icon" id="originAddress"
-                  placeholder="Search for Origin Address" autocomplete="off" list="addresses">
+                  placeholder="Search for Origin Address" autocomplete="off" list="addresses" required>
                 <datalist id="addresses">
                   <option value="Default value 1">
                   <option value="Default value 2">
@@ -198,7 +198,7 @@
             <div class="col-md-8">
               <div class="form-group">
                 Port <br><br>
-                <select class="form-select" aria-label="Default select example" required id="port">
+                <select class="form-select" aria-label="Default select example" id="port" required>
                   <option selected>Select Port</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -248,7 +248,7 @@
                 <b>Destination Address</b> <br><br>
 
                 <input type="search" class="form-control search-icon" id="destinationAddress"
-                  placeholder="Search for Destination Address" autocomplete="off" list="addresses">
+                  placeholder="Search for Destination Address" autocomplete="off" list="addresses" required>
                 <datalist id="addresses">
                   <option value="Default value 1">
                   <option value="Default value 2">
@@ -283,7 +283,7 @@
                   <button type="button" class="btn add-products" onclick="showTextbox()">Add
                     Products</button>
                   <br><br>
-                  <input type="text" id="myTextbox" class="custom-textbox" autocomplete="off">
+                  <input type="text" id="myTextbox" class="custom-textbox" autocomplete="off" required>
                 </div>
               </div>
             </div>
@@ -336,7 +336,7 @@
                 <b>When will your cargo be ready ?</b> <br><br>
                 <p>To provide you the best rates, you must select a date within the next 6 weeks.</p><br>
                 <div style="margin-left: 200px;">
-                  <input type="text" name="daterange" id="text_date_range" />
+                  <input type="text" name="daterange" id="text_date_range" required/>
                 </div>
               </div>
             </div>

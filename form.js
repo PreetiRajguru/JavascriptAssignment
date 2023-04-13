@@ -8,7 +8,18 @@ function getFormValues() {
     myForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        console.log("Booking Name : " + document.getElementById("bookingname").value);
+        const name = document.getElementById("bookingname");
+        const bookingName = name.value;
+        if (!bookingName.match(/^[a-zA-Z\s]*$/)) {
+            alert("Booking Name must contain only letters and spaces");
+            return false;
+        }
+        if (bookingName.length < 3 || bookingName.length > 50) {
+            alert("Booking Name must be between 3 and 50 characters");
+            return false;
+        }
+        console.log("Booking Name : " + bookingName);
+
 
         const selectConsignee = document.getElementById("consignee");
         const selectedConsignee = selectConsignee.value;
@@ -21,6 +32,10 @@ function getFormValues() {
         const radioVal = document.querySelector('input[name="options"]:checked');
         if (radioVal && radioVal.value) {
             console.log("Incoterms : " + radioVal.value)
+        }
+        if (!radioVal) {
+            alert("Please select an Incoterm option");
+            return false;
         }
 
         console.log("Less Than Container");
@@ -43,7 +58,9 @@ function getFormValues() {
         console.log("Package Type : " + selectedPType);
         console.log("Total Quantity : " + document.getElementById("fulltotalquantity").value);
 
-        console.log("Origin Address : " + document.getElementById("originAddress").value);
+        const oaddress = document.getElementById("originAddress");
+        const originAddress = oaddress.value;
+        console.log("Origin Address : " + originAddress);
 
         const selectPort = document.getElementById("port");
         const selectedPort = selectPort.value;
@@ -53,23 +70,41 @@ function getFormValues() {
         if (radioValue && radioValue.value) {
             console.log("Origin to Port ? : " + radioValue.value)
         }
+        if (!radioVal) {
+            alert("Please select Yes or No");
+            return false;
+        }
 
-        console.log("Destination Address : " + document.getElementById("destinationAddress").value);
+        const daddress = document.getElementById("destinationAddress");
+        const destinationAddress = daddress.value;
+        console.log("Destination Address : " + destinationAddress);
 
-        console.log("Added Products : " + document.getElementById("myTextbox").value);
+        const textboxValue = document.getElementById("myTextbox");
+        const textValue = textboxValue.value;
+        if (textValue.trim() === "") {
+            alert("Please add at least one product");
+            return false;
+        }
+        console.log("Added Products : " + textValue);
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
+        let checkedCount = 0;
+        
         checkboxes.forEach((checkbox) => {
-            if (checkbox.checked) {
-                console.log("Hazardous Materials : " + checkbox.value);
-            };
+          if (checkbox.checked) {
+            console.log("Hazardous Materials: " + checkbox.value);
+            checkedCount++;
+          }
         });
-
+        
+        if (checkedCount < 2) {
+          alert("Please select at least two hazardous materials checkboxes");
+        }
+        
         const text_date_range = document.getElementById("text_date_range").value;
         console.log("Date Range : " + text_date_range)
 
-        myForm.reset();
+        // myForm.reset();
     });
 
 }
@@ -81,7 +116,7 @@ $(function () {
     var currentDay = today.getDate();
 
     $('input[name="daterange"]').daterangepicker({
-        opens: 'left',
+        opens: 'center',
         minDate: new Date(currentYear, currentMonth, currentDay),
         maxDate: new Date(currentYear, currentMonth + 1, currentDay),
         placeholder: "select date range"
