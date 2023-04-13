@@ -53,5 +53,43 @@ input.search-icon {
 }
 
 #myTextbox {
-    display: none; 
+    display: none;
+}
+
+.custom-button-group {
+    background-color: white !important;
+    border-color: rgb(157, 154, 154) !important;
+    color: black !important;
+}
+
+.p-style {
+    color: rgb(110, 111, 112);
+}
+
+.yes-no-button {
+    background-color: white;
+    border-color: rgb(157, 154, 154);
+    color: black;
+}
+
+.add-products {
+    background-color: white;
+    border-color: rgb(137, 135, 135);
+}
+
+.custom-textbox {
+    margin-left: 225px;
+}
+
+.custom-checkboxes {
+    color: rgb(70, 70, 71);
+}
+
+.submit-button {
+    background-color: hsl(165deg 100% 25.1%);
+    border-color: rgba(240, 248, 255, 0);
+    color: white;
+    height: 42px;
+    width: 210px;
+    border-radius: 5px;
 }

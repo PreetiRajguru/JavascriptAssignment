@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
     integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
   <link rel="stylesheet" href="Form.css">
+
+  <script src="form.js"></script>
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -70,17 +73,14 @@
 
 
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" value="exw">
-                  <label class="btn btn-secondary" for="option1"
-                    style="background-color: white; border-color: rgb(157, 154, 154); color: black;">EXW</label>
+                  <input type="radio" class="btn-check " name="options" id="option1" autocomplete="off" value="exw">
+                  <label class="btn btn-secondary custom-button-group" for="option1">EXW</label>
 
                   <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" value="fob">
-                  <label class="btn btn-secondary" for="option2"
-                    style="background-color: white; border-color: rgb(157, 154, 154); color: black;">FOB</label>
+                  <label class="btn btn-secondary custom-button-group" for="option2">FOB</label>
 
                   <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" value="fca">
-                  <label class="btn btn-secondary" for="option3"
-                    style="background-color: white; border-color: rgb(157, 154, 154); color: black;">FCA</label>
+                  <label class="btn btn-secondary custom-button-group" for="option3">FCA</label>
                 </div>
 
               </div>
@@ -216,7 +216,7 @@
             <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Origin Trucking
                 Services</label>
               <br><br>
-              <p style="color: rgb(110, 111, 112);">Select 'Yes' and your Flexport will collect your cargo and deliver
+              <p class="p-style">Select 'Yes' and your Flexport will collect your cargo and deliver
                 it
                 to the origin port.
                 This will incur a charge that is added as an individual line item on your estimate.</p>
@@ -227,12 +227,10 @@
                 <br><br>
 
                 <input type="radio" class="btn-check" name="optionsyesno" id="options" autocomplete="off" value="yes">
-                <label class="btn btn-secondary" for="options"
-                  style="background-color: white; border-color: rgb(157, 154, 154); color: black;">Yes</label>
+                <label class="btn btn-secondary yes-no-button" for="options">Yes</label>
 
                 <input type="radio" class="btn-check" name="optionsyesno" id="optionss" autocomplete="off" value="no">
-                <label class="btn btn-secondary" for="optionss"
-                  style="background-color: white; border-color: rgb(157, 154, 154); color: black;">No</label>
+                <label class="btn btn-secondary yes-no-button" for="optionss">No</label>
 
               </div>
             </div>
@@ -244,7 +242,7 @@
             <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Destination
                 Address</label>
               <br><br>
-              <p style="color: rgb(110, 111, 112);">The destination addresses requires access to a dock to unload the
+              <p class="p-style">The destination addresses requires access to a dock to unload the
                 shipment.</p>
             </div>
             <div class="col-md-8">
@@ -270,7 +268,7 @@
             <div class="col-md-4"><label for="booking-name" class="mb-2 text-right font-weight-bold">Products to be
                 Shipped</label>
               <br><br>
-              <p style="color: rgb(110, 111, 112);">At least one product is required.</p>
+              <p class="p-style">At least one product is required.</p>
             </div>
             <div class="col-md-8">
               <div class="form-group">
@@ -284,11 +282,11 @@
                     To add products to your shipment, start by adding products <br>
                     from your Shopify catalog or manually adding them.</p>
                   <br>
-                  <button type="button" class="btn" style="background-color: white; border-color: rgb(137, 135, 135);"
+                  <button type="button" class="btn add-products" 
                     onclick="showTextbox()">Add
                     Products</button>
                   <br><br>
-                  <input type="text" id="myTextbox" style="margin-left: 225px;" autocomplete="off">
+                  <input type="text" id="myTextbox" class="custom-textbox" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -305,25 +303,25 @@
                 <b>Do any of your products contain the following</b> <br><br>
 
                 <label>
-                  <input type="checkbox" name="option" value="Batteries"> <b style="color: rgb(70, 70, 71);">
+                  <input type="checkbox" name="option" value="Batteries"> <b class="custom-checkboxes">
                     Batteries</b>
                 </label>
                 <br><br>
                 <label>
                   <input type="checkbox" name="option" value="Hazardous Materials"> <b
-                    style="color: rgb(70, 70, 71);">Hazardous
+                  class="custom-checkboxes">Hazardous
                     Materials</b>
                 </label>
                 <br><br>
                 <label>
                   <input type="checkbox" name="option" value="Creams, Liquids, Powder"> <b
-                    style="color: rgb(70, 70, 71);">Creams,
+                  class="custom-checkboxes">Creams,
                     Liquids, Powder</b>
                 </label>
                 <br><br>
                 <label>
                   <input type="checkbox" name="option" value="None of the above"> <b
-                    style="color: rgb(70, 70, 71);">None of the
+                  class="custom-checkboxes">None of the
                     above</b>
                 </label>
               </div>
@@ -350,8 +348,7 @@
 
           <!-- Submit Button  -->
           <div>
-            <button type="submit" class="float-end"
-              style="background-color: hsl(165deg 100% 25.1%); border-color: rgba(240, 248, 255, 0); color: white; height: 42px; width: 210px; border-radius: 5px;">Submit
+            <button type="submit" class="float-end submit-button" onclick="getFormValues()">Submit
               Booking Request</button>
             <br><br>
           </div>
@@ -383,78 +380,6 @@
         tabTrigger.show()
       })
     })
-
-    function showTextbox() {
-      var textbox = document.getElementById("myTextbox");
-      textbox.style.display = "block"; // Show the textbox
-    }
-
-    const myForm = document.getElementById("myForm");
-    myForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      console.log("Booking Name : " + document.getElementById("bookingname").value);
-
-      const selectConsignee = document.getElementById("consignee");
-      const selectedConsignee = selectConsignee.value;
-      console.log("Consignee : " + selectedConsignee);
-
-      const selectSupplier = document.getElementById("supplier");
-      const selectedSupplier = selectSupplier.value;
-      console.log("Supplier : " + selectedSupplier);
-
-      console.log("Less Than Container");
-      console.log("Total Weight : " + document.getElementById("totalweight").value + "kg");
-      console.log("Total Volume : " + document.getElementById("totalvolume").value + "cbm");
-      const selectPackage = document.getElementById("packagetype");
-      const selectedType = selectPackage.value;
-      console.log("Package Type : " + selectedType);
-      console.log("Total Quantity : " + document.getElementById("totalquantity").value);
-
-      console.log("Full Containers");
-      console.log("Number of Containers : " + document.getElementById("nocontainers").value);
-      const selectContainerType = document.getElementById("fullcontainertype");
-      const selectedCType = selectContainerType.value;
-      console.log("Container Type : " + selectedCType);
-      console.log("Total Weight : " + document.getElementById("fulltotalweight").value + "kg");
-      console.log("Total Volume : " + document.getElementById("fulltotalvolume").value + "cbm");
-      const selectPackageType = document.getElementById("fullpackagetype");
-      const selectedPType = selectPackageType.value;
-      console.log("Package Type : " + selectedPType);
-      console.log("Total Quantity : " + document.getElementById("fulltotalquantity").value);
-
-      console.log("Origin Address : " + document.getElementById("originAddress").value);
-
-      const selectPort = document.getElementById("port");
-      const selectedPort = selectPort.value;
-      console.log("Port : " + selectedPort);
-
-      console.log("Destination Address : " + document.getElementById("destinationAddress").value);
-
-      console.log("Added Products : " + document.getElementById("myTextbox").value);
-
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-      checkboxes.forEach((checkbox) => {
-        if (checkbox.checked) {
-          console.log("Hazardous Materials : " + checkbox.value);
-        };
-      });
-
-      const radioVal = document.querySelector('input[name="options"]:checked');
-      if (radioVal && radioVal.value) {
-        console.log("Incoterms : " + radioVal.value)
-      }
-
-      const radioValue = document.querySelector('input[name="optionsyesno"]:checked');
-      if (radioValue && radioValue.value) {
-        console.log("Origin to Port ? : " + radioValue.value)
-      }
-
-      const text_date_range = document.getElementById("text_date_range").value;
-      console.log("Date Range : " + text_date_range)
-
-      myForm.reset();
-    });
   </script>
 
 </body>
