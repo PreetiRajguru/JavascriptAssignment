@@ -73,3 +73,26 @@ function getFormValues() {
     });
 
 }
+
+$(function () {
+    var today = new Date();
+    var currentYear = today.getFullYear();
+    var currentMonth = today.getMonth();
+    var currentDay = today.getDate();
+
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'left',
+        minDate: new Date(currentYear, currentMonth, currentDay),
+        maxDate: new Date(currentYear, currentMonth + 1, currentDay),
+        placeholder: "select date range"
+    })
+});
+var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+triggerTabList.forEach(function (triggerEl) {
+    var tabTrigger = new bootstrap.Tab(triggerEl)
+
+    triggerEl.addEventListener('click', function (event) {
+        event.preventDefault()
+        tabTrigger.show()
+    })
+})
