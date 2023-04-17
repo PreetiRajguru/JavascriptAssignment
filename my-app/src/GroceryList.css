@@ -1,0 +1,53 @@
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #363737;
+    height: 15px;
+}
+
+body {
+    background-color: white;
+}
+
+.div-margin {
+    margin: 20px
+}
+
+.text-input {
+    width: 300px;
+    border-radius: 20px;
+    height: 42px;
+    margin-left: 33px
+}
+
+.sort-button {
+    background-color: #72b8ff;
+    border-color: white
+}
+
+.ul-style {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    list-style: none
+}
+
+.li-style {
+    border-radius: 10px;
+    border: 1px solid black;
+    border-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    width: 300px;
+}
+
+.li-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.delete {
+    margin-left: 50px
+}
