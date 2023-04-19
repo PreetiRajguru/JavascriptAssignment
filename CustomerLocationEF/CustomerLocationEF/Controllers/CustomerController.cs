@@ -1,6 +1,7 @@
 ﻿using CustomerLocationEF.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using CustomerLocation.Services.Services;
+using Microsoft.AspNetCore.Localization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,37 +30,78 @@ namespace CustomerLocationEF.WebAPI.Controllers
             });
         }
 
-
-        // GET: api/<CustomerController>
-        /*[HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }*/
-
         // GET api/<CustomerController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            return Ok(new
+            {
+                message = "Ok",
+                statusCode = StatusCodes.Status200OK,
+                result = _customerService.GetById(id)
+            });
         }
 
         // POST api/<CustomerController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] Customer customer)
         {
+            if (ModelState.IsValid)
+            {
+                int response = _customerService.Create(customer);
+                return Ok(new
+                {
+                    message = "Ok",
+                    statusCode = StatusCodes.Status200OK,
+                    result = response
+                });
+            }
+            return BadRequest(new
+            {
+                message = "Error",
+                statusCode = StatusCodes.Status400BadRequest
+            });
         }
+
+
 
         // PUT api/<CustomerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Update(int id, Customer customer)
         {
+            if (ModelState.IsValid)
+            {
+                int response = _customerService.Update(id, customer);
+                return Ok(new
+                {
+                    message = "Ok",
+                    statusCode = StatusCodes.Status200OK,
+                    result = response
+                });
+            }
+            return BadRequest(new
+            {
+                message = "Error",
+                statusCode = StatusCodes.Status400BadRequest
+            });
         }
+
 
         // DELETE api/<CustomerController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            return _customerService.Delete(id)
+            ? Ok(new
+            {
+                message = "Ok",
+                statusCode = StatusCodes.Status200OK,
+            })
+            : BadRequest(new
+            {
+                message = "Error",
+                statusCode = StatusCodes.Status400BadRequest
+            });
         }
     }
 }

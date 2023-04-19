@@ -6047,11 +6047,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
+      "projectUniqueName": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
       "projectName": "CustomerLocationEF.Data",
-      "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
+      "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\obj\\",
+      "outputPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

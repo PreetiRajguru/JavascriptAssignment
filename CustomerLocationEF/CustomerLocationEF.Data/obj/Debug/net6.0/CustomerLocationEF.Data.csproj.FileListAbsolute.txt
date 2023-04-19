@@ -12,3 +12,17 @@ C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\ne
 C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.pdb
 C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.genruntimeconfig.cache
 C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\ref\CustomerLocationEF.Data.dll
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\bin\Debug\net6.0\CustomerLocationEF.Data.deps.json
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\bin\Debug\net6.0\CustomerLocationEF.Data.runtimeconfig.json
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\bin\Debug\net6.0\CustomerLocationEF.Data.dll
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\bin\Debug\net6.0\CustomerLocationEF.Data.pdb
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.csproj.AssemblyReference.cache
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.AssemblyInfoInputs.cache
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.AssemblyInfo.cs
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.csproj.CoreCompileInputs.cache
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.dll
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\refint\CustomerLocationEF.Data.dll
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.pdb
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\CustomerLocationEF.Data.genruntimeconfig.cache
+D:\Preeti\ReactAssignment\JavascriptAssignment\CustomerLocationEF\CustomerLocationEF.Data\obj\Debug\net6.0\ref\CustomerLocationEF.Data.dll

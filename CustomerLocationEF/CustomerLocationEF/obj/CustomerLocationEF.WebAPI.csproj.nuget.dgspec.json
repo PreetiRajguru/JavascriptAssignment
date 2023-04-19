@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj": {}
+    "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj": {
+    "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj",
+        "projectUniqueName": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj",
         "projectName": "CustomerLocation.Services",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj",
+        "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocation.Services\\obj\\",
+        "outputPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocation.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj"
+              "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj": {
+                "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj"
               }
             }
           }
@@ -85,14 +85,14 @@
         }
       }
     },
-    "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj": {
+    "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
+        "projectUniqueName": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
         "projectName": "CustomerLocationEF.Data",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
+        "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\obj\\",
+        "outputPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -162,14 +162,14 @@
         }
       }
     },
-    "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj": {
+    "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj",
+        "projectUniqueName": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj",
         "projectName": "CustomerLocationEF.WebAPI",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj",
+        "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF\\CustomerLocationEF.WebAPI.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF\\obj\\",
+        "outputPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -186,11 +186,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj"
+              "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj": {
+                "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocation.Services\\CustomerLocation.Services.csproj"
               },
-              "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj"
+              "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj": {
+                "projectPath": "D:\\Preeti\\ReactAssignment\\JavascriptAssignment\\CustomerLocationEF\\CustomerLocationEF.Data\\CustomerLocationEF.Data.csproj"
               }
             }
           }

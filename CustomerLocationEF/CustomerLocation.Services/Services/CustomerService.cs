@@ -6,10 +6,10 @@ namespace CustomerLocation.Services.Services
     public interface ICustomer
     {
         List<Customer> GetAll();
-        Customer GetCustomer(int id);
-        int AddCustomer(Customer customer);
-        int UpdateCustomer(int id, Customer updatedCustomer);
-        int DeleteCustomer(int id);
+        Customer GetById(int id);
+        int Create(Customer customer);
+        int Update(int id, Customer updatedCustomer);
+        bool Delete(int id);
     }
 
 
@@ -21,29 +21,55 @@ namespace CustomerLocation.Services.Services
         {
             _context = newContext;
         }
-        public int AddCustomer(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int DeleteCustomer(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         List<Customer> ICustomer.GetAll()
         {
             return _context.Customers.ToList();
         }
 
-        public Customer GetCustomer(int id)
+        public Customer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Customers.FirstOrDefault(c => c.Id == id);
         }
 
-        public int UpdateCustomer(int id, Customer updatedCustomer)
+        public int Create(Customer customer)
         {
-            throw new NotImplementedException();
+            Customer result = _context.Customers.FirstOrDefault(c => c.Id == customer.Id);
+            if (result == null)
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+                return (int)customer.Id;
+            }
+            return -1;
+        }
+
+        public int Update(int id, Customer customer)
+        {
+            Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Id == id);
+            if (existingCustomer != null)
+            {
+                existingCustomer.FirstName = customer.FirstName;
+                existingCustomer.LastName = customer.LastName;
+                existingCustomer.DateOfBirth = customer.DateOfBirth;
+                existingCustomer.PhoneNumber = customer.PhoneNumber;
+                existingCustomer.Email = customer.Email;
+                existingCustomer.Address = customer.Address;
+            }
+            _context.SaveChanges();
+            return (int)customer.Id;
+        }
+
+        public bool Delete(int id)
+        {
+            Customer customer = _context.Customers.FirstOrDefault(c => c.Id == id);
+            if (customer != null)
+            {
+                _context.Customers.Remove(customer);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }
