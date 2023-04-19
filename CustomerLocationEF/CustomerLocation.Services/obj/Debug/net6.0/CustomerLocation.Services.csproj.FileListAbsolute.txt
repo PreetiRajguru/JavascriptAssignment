@@ -1,0 +1,17 @@
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\bin\Debug\net6.0\CustomerLocation.Services.deps.json
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\bin\Debug\net6.0\CustomerLocation.Services.runtimeconfig.json
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\bin\Debug\net6.0\CustomerLocation.Services.dll
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\bin\Debug\net6.0\CustomerLocation.Services.pdb
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\bin\Debug\net6.0\CustomerLocationEF.Data.dll
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\bin\Debug\net6.0\CustomerLocationEF.Data.pdb
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.AssemblyInfo.cs
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.csproj.CopyComplete
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.dll
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\refint\CustomerLocation.Services.dll
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.pdb
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\CustomerLocation.Services.genruntimeconfig.cache
+C:\Users\HP\source\repos\CustomerLocationEF\CustomerLocation.Services\obj\Debug\net6.0\ref\CustomerLocation.Services.dll

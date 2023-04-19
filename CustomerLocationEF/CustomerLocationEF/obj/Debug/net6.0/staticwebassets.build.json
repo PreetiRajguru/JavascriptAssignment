@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "HpgVd/wAwhjhdxNTy63bFK+67i3LD1IUxdozRSnORJw=",
+  "Source": "CustomerLocationEF.WebAPI",
+  "BasePath": "_content/CustomerLocationEF.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
