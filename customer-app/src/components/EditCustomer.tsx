@@ -4,7 +4,7 @@ import axios from "axios";
 import {
   Box,
   Button,
-  Grid,
+  Container,
   TextField,
   Typography,
 } from "@mui/material";
@@ -36,7 +36,7 @@ const EditCustomer = () => {
     const fetchCustomer = async () => {
       try {
         const response = await axios.get(`/api/Customer/${id}`);
-        setCustomer(response.data);
+        setCustomer(response.data.result);
       } catch (error) {
         console.error(error);
       }
@@ -60,88 +60,78 @@ const EditCustomer = () => {
   };
 
   return (
-    <Box sx={{ mt: 4 }}>
-      <Typography variant="h4" align="center" mb={4}>
-        Edit Customer
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              fullWidth
-              label="First Name"
-              name="firstName"
-              value={customer.firstName}
-              onChange={handleInputChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              fullWidth
-              label="Last Name"
-              name="lastName"
-              value={customer.lastName}
-              onChange={handleInputChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              required
-              fullWidth
-              type="date"
-              label="Date of Birth"
-              name="dateOfBirth"
-              value={customer.dateOfBirth}
-              onChange={handleInputChange}
-              InputLabelProps={{ shrink: true }}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              fullWidth
-              label="Phone Number"
-              name="phoneNumber"
-              value={customer.phoneNumber}
-              onChange={handleInputChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              fullWidth
-              label="Email"
-              name="email"
-              value={customer.email}
-              onChange={handleInputChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              required
-              fullWidth
-              label="Address"
-              name="address"
-              value={customer.address}
-              onChange={handleInputChange}
-              multiline
-              rows={4}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button type="submit" variant="contained" color="primary">
-                Save
-              </Button>
-              <Button>
-                Cancel
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
-      </form>
+    <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+      <Container maxWidth="sm">
+        <Typography variant="h4" align="center" mb={4}>
+          Edit Customer
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit}>
+          <TextField
+            name="firstName"
+            label="First Name"
+            fullWidth
+            required
+            value={customer.firstName}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            name="lastName"
+            label="Last Name"
+            fullWidth
+            required
+            value={customer.lastName}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            name="dateOfBirth"
+            // label="Date of Birth"
+            type="date"
+            fullWidth
+            required
+            value={customer.dateOfBirth}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            name="phoneNumber"
+            label="Phone Number"
+            type="tel"
+            fullWidth
+            required
+            value={customer.phoneNumber}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            name="email"
+            label="Email"
+            type="email"
+            fullWidth
+            required
+            value={customer.email}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            name="address"
+            label="Address"
+            fullWidth
+            value={customer.address}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2 }}
+          >
+            Save
+          </Button>
+        </Box>
+      </Container>
     </Box>
   );
 };

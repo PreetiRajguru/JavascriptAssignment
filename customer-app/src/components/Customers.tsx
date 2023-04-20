@@ -4,6 +4,9 @@ import axios from "axios";
 import {
   Box,
   Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Paper,
   Table,
   TableBody,
@@ -26,6 +29,7 @@ interface Customer {
 
 const Customers = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
+  const [selectedCustomerIndex, setSelectedCustomerIndex] = useState<number>(-1);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -50,6 +54,8 @@ const Customers = () => {
     }
   };
 
+  console.log(customers.length && customers[selectedCustomerIndex]);
+
   return (
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" align="center" mb={4}>
@@ -70,8 +76,8 @@ const Customers = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map((customer) => (
-              <TableRow key={customer.id}>
+            {customers.map((customer, index) => (
+              <TableRow key={customer.id} onClick={() => setSelectedCustomerIndex(index)}>
                 <TableCell>{customer.id}</TableCell>
                 <TableCell>{customer.firstName}</TableCell>
                 <TableCell>{customer.lastName}</TableCell>
@@ -93,6 +99,7 @@ const Customers = () => {
                     variant="contained"
                     color="secondary"
                     onClick={() => handleDelete(customer.id)}
+                    disabled={customer.address !== ''}
                   >
                     Delete
                   </Button>
@@ -102,8 +109,20 @@ const Customers = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      {selectedCustomerIndex !== -1 && (
+        <Dialog open onClose={() => setSelectedCustomerIndex(-1)}>
+          <DialogTitle>Customer data</DialogTitle>
+          <DialogContent>
+            {customers[selectedCustomerIndex].address}
+            {customers[selectedCustomerIndex].email}
+          </DialogContent>
+        </Dialog>
+      )}
     </Box>
   );
 };
 
 export default Customers;
+
+
+

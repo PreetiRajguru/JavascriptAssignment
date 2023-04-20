@@ -39,7 +39,7 @@ namespace CustomerLocation.Services.Services
             {
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
-                return (int)customer.Id;
+                return customer.Id;
             }
             return -1;
         }
@@ -57,7 +57,7 @@ namespace CustomerLocation.Services.Services
                 existingCustomer.Address = customer.Address;
             }
             _context.SaveChanges();
-            return (int)customer.Id;
+            return customer.Id;
         }
 
         public bool Delete(int id)
