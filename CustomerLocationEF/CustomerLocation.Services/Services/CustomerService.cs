@@ -24,7 +24,7 @@ namespace CustomerLocation.Services.Services
 
         List<Customer> ICustomer.GetAll()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.Where(c => c.IsDeleted == false).ToList();
         }
 
         public Customer GetById(int id)
@@ -65,7 +65,7 @@ namespace CustomerLocation.Services.Services
             Customer customer = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (customer != null)
             {
-                _context.Customers.Remove(customer);
+                customer.IsDeleted = true;
                 _context.SaveChanges();
                 return true;
             }
