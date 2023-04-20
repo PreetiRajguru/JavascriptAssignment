@@ -15,7 +15,18 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ICustomer, CustomerService>();
 builder.Services.AddDbContext<CustomerDbContext>(options => options.UseSqlServer("Server=localhost;Database=Customer;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True;"));
 
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAll", builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+    });
+
 var app = builder.Build();
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
