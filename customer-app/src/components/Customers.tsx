@@ -43,7 +43,9 @@ const Customers = () => {
     fetchCustomers();
   }, []);
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (e:any,id: number) => {
+    // e.stopImmediatePropogation();
+    setSelectedCustomerIndex(-1);
     try {
       await axios.delete(`/api/Customer/${id}`);
       setCustomers((prevState) =>
@@ -57,10 +59,22 @@ const Customers = () => {
   console.log(customers.length && customers[selectedCustomerIndex]);
 
   return (
+
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" align="center" mb={4}>
         Customers
       </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        component={Link}
+        to={`/add`}
+        sx={{ marginLeft: 'auto', marginRight: 1 }}
+        style={{marginLeft:'15px'}}
+      >
+        Add Customer
+      </Button>
+      <br></br><br></br>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -98,7 +112,7 @@ const Customers = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => handleDelete(customer.id)}
+                    onClick={(e) => handleDelete(e,customer.id)}
                     disabled={customer.address !== ''}
                   >
                     Delete
@@ -109,7 +123,7 @@ const Customers = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      {selectedCustomerIndex !== -1 && (
+      {selectedCustomerIndex !== -1 && customers[selectedCustomerIndex]?.email && (
         <Dialog open onClose={() => setSelectedCustomerIndex(-1)}>
           <DialogTitle>Customer data</DialogTitle>
           <DialogContent>

@@ -20,6 +20,7 @@ interface Customer {
 }
 
 const EditCustomer = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { id } = useParams<{ id: string }>();
   const history = useNavigate();
   const [customer, setCustomer] = useState<Customer>({
@@ -31,6 +32,8 @@ const EditCustomer = () => {
     email: "",
     address: "",
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCustomer = async () => {
@@ -59,13 +62,21 @@ const EditCustomer = () => {
     }
   };
 
+  const toggleDrawer = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const handleBackButton = () => {
+    navigate("/customers");
+  };
+
   return (
     <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
       <Container maxWidth="sm">
         <Typography variant="h4" align="center" mb={4}>
           Edit Customer
         </Typography>
-        <Box component="form" onSubmit={handleSubmit}>
+        <Box component="form" onSubmit={handleSubmit} onClick={toggleDrawer}>
           <TextField
             name="firstName"
             label="First Name"
@@ -126,9 +137,16 @@ const EditCustomer = () => {
             type="submit"
             variant="contained"
             color="primary"
-            sx={{ mt: 2 }}
+            sx={{ mt: 2, mr: 2 }}
           >
             Save
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleBackButton}
+            sx={{ mt: 2 }}
+          >
+            Back
           </Button>
         </Box>
       </Container>

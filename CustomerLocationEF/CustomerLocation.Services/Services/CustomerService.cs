@@ -1,5 +1,5 @@
-﻿using CustomerLocationEF.Data.Models;
-using CustomerLocationEF.Data.Context;
+﻿using CustomerLocationEF.Data.Context;
+using CustomerLocationEF.Data.Models;
 
 namespace CustomerLocation.Services.Services
 {
@@ -34,19 +34,14 @@ namespace CustomerLocation.Services.Services
 
         public int Create(Customer customer)
         {
-            Customer result = _context.Customers.FirstOrDefault(c => c.Id == customer.Id);
-            if (result == null)
-            {
-                _context.Customers.Add(customer);
-                _context.SaveChanges();
-                return customer.Id;
-            }
-            return -1;
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return customer.Id;
         }
 
         public int Update(int id, Customer customer)
         {
-            Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Id == id);
+            Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Email == customer.Email);
             if (existingCustomer != null)
             {
                 existingCustomer.FirstName = customer.FirstName;
@@ -59,6 +54,22 @@ namespace CustomerLocation.Services.Services
             _context.SaveChanges();
             return customer.Id;
         }
+
+        /*   public int Update(int id, Customer customer)
+           {
+               Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Id == id);
+               if (existingCustomer != null)
+               {
+                   existingCustomer.FirstName = customer.FirstName;
+                   existingCustomer.LastName = customer.LastName;
+                   existingCustomer.DateOfBirth = customer.DateOfBirth;
+                   existingCustomer.PhoneNumber = customer.PhoneNumber;
+                   existingCustomer.Email = customer.Email;
+                   existingCustomer.Address = customer.Address;
+               }
+               _context.SaveChanges();
+               return customer.Id;
+           }*/
 
         public bool Delete(int id)
         {

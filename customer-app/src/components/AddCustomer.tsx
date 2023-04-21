@@ -1,136 +1,4 @@
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import {
-//   TextField,
-//   Button,
-//   Typography,
-//   Box,
-//   Container,
-// } from "@mui/material";
-
-// interface Customer {
-//   // id: number;
-//   firstName: string;
-//   lastName: string;
-//   dateOfBirth: string;
-//   phoneNumber: string;
-//   email: string;
-//   address: string;
-// }
-
-// const AddCustomer = () => {
-//   const [customer, setCustomer] = useState<Customer>({
-//     // id: 0,
-//     firstName: "",
-//     lastName: "",
-//     dateOfBirth: "",
-//     phoneNumber: "",
-//     email: "",
-//     address: "",
-//   });
-
-//   const history = useNavigate();
-
-//   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-//     event.preventDefault();
-//     try {
-//       await axios.post("/api/Customer", customer);
-//       history("/customers");
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//   const handleInputChange = (
-//     event: React.ChangeEvent<HTMLInputElement>
-//   ) => {
-//     const { name, value } = event.target;
-//     setCustomer((prevState) => ({
-//       ...prevState,
-//       [name]: value,
-//     }));
-//   };
-
-//   return (
-//     <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-//       <Container maxWidth="sm">
-//         <Typography variant="h4" align="center" mb={4}>
-//           Add Customer
-//         </Typography>
-//         <Box component="form" onSubmit={handleSubmit}>
-//           <TextField
-//             name="firstName"
-//             label="First Name"
-//             fullWidth
-//             required
-//             value={customer.firstName}
-//             onChange={handleInputChange}
-//             sx={{ mb: 2 }}
-//           />
-//           <TextField
-//             name="lastName"
-//             label="Last Name"
-//             fullWidth
-//             required
-//             value={customer.lastName}
-//             onChange={handleInputChange}
-//             sx={{ mb: 2 }}
-//           />
-//           <TextField
-//             name="dateOfBirth"
-//             // label="Date of Birth"
-//             type="date"
-//             fullWidth
-//             required
-//             value={customer.dateOfBirth}
-//             onChange={handleInputChange}
-//             sx={{ mb: 2 }}
-//           />
-//           <TextField
-//             name="phoneNumber"
-//             label="Phone Number"
-//             type="tel"
-//             fullWidth
-//             required
-//             value={customer.phoneNumber}
-//             onChange={handleInputChange}
-//             sx={{ mb: 2 }}
-//           />
-//           <TextField
-//             name="email"
-//             label="Email"
-//             type="email"
-//             fullWidth
-//             required
-//             value={customer.email}
-//             onChange={handleInputChange}
-//             sx={{ mb: 2 }}
-//           />
-//           <TextField
-//             name="address"
-//             label="Address"
-//             fullWidth
-            
-//             value={customer.address}
-//             onChange={handleInputChange}
-//             sx={{ mb: 2 }}
-//           />
-//           <Button
-//             type="submit"
-//             variant="contained"
-//             color="primary"
-//             sx={{ mt: 2 }}
-//           >
-//             Save
-//           </Button>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default AddCustomer;import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -140,7 +8,6 @@ import {
   Box,
   Container,
 } from "@mui/material";
-import { useState } from "react";
 
 interface Customer {
   firstName: string;
@@ -152,6 +19,7 @@ interface Customer {
 }
 
 const AddCustomer = () => {
+   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [customer, setCustomer] = useState<Customer>({
     firstName: "",
     lastName: "",
@@ -166,8 +34,22 @@ const AddCustomer = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await axios.post("/api/Customer", customer);
+      // const data = await axios.post("/api/Customer", customer);
+      
+      // if(data.data.statusCode==400 ){
+      //   alert("Customer with same email already exists");
+      // return;
+      // }
+      
+      // console.log(data);
+      // navigate("/customers");
+
+     axios.post("/api/Customer", customer).then(s=>{
+      console.log(s);
       navigate("/customers");
+     },error=>{
+      alert(error.response.data.message);
+     });
     } catch (error) {
       console.error(error);
     }
@@ -187,13 +69,17 @@ const AddCustomer = () => {
     navigate("/customers");
   };
 
+  const toggleDrawer = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
       <Container maxWidth="sm">
         <Typography variant="h4" align="center" mb={4}>
           Add Customer
         </Typography>
-        <Box component="form" onSubmit={handleSubmit}>
+        <Box component="form" onSubmit={handleSubmit} onClick={toggleDrawer}>
           <TextField
             name="firstName"
             label="First Name"
@@ -214,7 +100,6 @@ const AddCustomer = () => {
           />
           <TextField
             name="dateOfBirth"
-            // label="Date of Birth"
             type="date"
             fullWidth
             required
@@ -273,6 +158,3 @@ const AddCustomer = () => {
 };
 
 export default AddCustomer;
-
-
-
