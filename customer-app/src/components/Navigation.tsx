@@ -214,6 +214,17 @@ const Navigation = () => {
     setAnchorEl(null);
   };
 
+  const [anchor, setAnchor] = React.useState<null | HTMLElement>(null);
+  const Opened = Boolean(anchor);
+  const handleClicked = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchor(event.currentTarget);
+  };
+  const handleClosed = () => {
+    setAnchor(null);
+  };
+
+
+
   const toggleDrawer = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -233,7 +244,7 @@ const Navigation = () => {
         <Tooltip title="Account settings">
           <IconButton
           style={{marginLeft:'1100px'}}
-            onClick={handleClick}
+            onClick={handleClicked}
             size="small"
             sx={{ ml: 2 }}
             aria-controls={Open ? 'account-menu' : undefined}

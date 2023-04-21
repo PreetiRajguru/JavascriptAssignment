@@ -50,9 +50,10 @@ namespace CustomerLocation.Services.Services
                 existingCustomer.PhoneNumber = customer.PhoneNumber;
                 existingCustomer.Email = customer.Email;
                 existingCustomer.Address = customer.Address;
+                _context.SaveChanges();
+                return customer.Id;
             }
-            _context.SaveChanges();
-            return customer.Id;
+            return 1;
         }
 
         /*   public int Update(int id, Customer customer)

@@ -79,13 +79,10 @@ const Customers = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
+              <TableCell>Id</TableCell>
               <TableCell>First Name</TableCell>
               <TableCell>Last Name</TableCell>
-              <TableCell>Date of Birth</TableCell>
-              <TableCell>Phone Number</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell>Address</TableCell>
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
@@ -95,10 +92,7 @@ const Customers = () => {
                 <TableCell>{customer.id}</TableCell>
                 <TableCell>{customer.firstName}</TableCell>
                 <TableCell>{customer.lastName}</TableCell>
-                <TableCell>{customer.dateOfBirth}</TableCell>
-                <TableCell>{customer.phoneNumber}</TableCell>
                 <TableCell>{customer.email}</TableCell>
-                <TableCell>{customer.address}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"
@@ -127,8 +121,12 @@ const Customers = () => {
         <Dialog open onClose={() => setSelectedCustomerIndex(-1)}>
           <DialogTitle>Customer data</DialogTitle>
           <DialogContent>
-            {customers[selectedCustomerIndex].address}
-            {customers[selectedCustomerIndex].email}
+          Name : {customers[selectedCustomerIndex].firstName}&nbsp;
+          {customers[selectedCustomerIndex].lastName}<br></br>
+          DOB : {customers[selectedCustomerIndex].dateOfBirth}<br></br>
+          Phone Number : {customers[selectedCustomerIndex].phoneNumber}<br></br>
+          Email : {customers[selectedCustomerIndex].email}<br></br>
+          Address : {customers[selectedCustomerIndex].address}<br></br>
           </DialogContent>
         </Dialog>
       )}
@@ -137,6 +135,3 @@ const Customers = () => {
 };
 
 export default Customers;
-
-
-

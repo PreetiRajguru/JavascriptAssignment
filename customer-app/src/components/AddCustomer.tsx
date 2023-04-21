@@ -19,7 +19,7 @@ interface Customer {
 }
 
 const AddCustomer = () => {
-   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [customer, setCustomer] = useState<Customer>({
     firstName: "",
     lastName: "",
@@ -33,26 +33,42 @@ const AddCustomer = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      // const data = await axios.post("/api/Customer", customer);
-      
-      // if(data.data.statusCode==400 ){
-      //   alert("Customer with same email already exists");
-      // return;
-      // }
-      
-      // console.log(data);
-      // navigate("/customers");
 
-     axios.post("/api/Customer", customer).then(s=>{
-      console.log(s);
-      navigate("/customers");
-     },error=>{
-      alert(error.response.data.message);
-     });
-    } catch (error) {
-      console.error(error);
+    const newCustomer: Customer = {
+      firstName: customer.firstName,
+      lastName: customer.lastName,
+      dateOfBirth: customer.dateOfBirth,
+      phoneNumber: customer.phoneNumber,
+      email: customer.email,
+      address: customer.address
     }
+
+
+    const validPhone = /^[0-9]{10}$/;
+    const resultNumber = validPhone.test(newCustomer.phoneNumber);
+    const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+   const result = pattern.test(newCustomer.email);
+
+    if(resultNumber==false)
+    {
+      alert("Incorrect Phone Number");
+    }
+    else if(result===false){
+    alert("Incorrect Email Format");
+   } 
+else{
+  try {
+    axios.post("/api/Customer", customer).then(s => {
+    console.log(s);
+    navigate("/customers");
+  }, error => {
+    alert(error.response.data.message);
+  });
+} catch (error) {
+  console.error(error);
+}
+}
+    
   };
 
   const handleInputChange = (
@@ -85,6 +101,7 @@ const AddCustomer = () => {
             label="First Name"
             fullWidth
             required
+            autoComplete="off"
             value={customer.firstName}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
@@ -94,6 +111,7 @@ const AddCustomer = () => {
             label="Last Name"
             fullWidth
             required
+            autoComplete="off"
             value={customer.lastName}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
@@ -103,6 +121,7 @@ const AddCustomer = () => {
             type="date"
             fullWidth
             required
+            autoComplete="off"
             value={customer.dateOfBirth}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
@@ -113,6 +132,7 @@ const AddCustomer = () => {
             type="tel"
             fullWidth
             required
+            autoComplete="off"
             value={customer.phoneNumber}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
@@ -123,6 +143,7 @@ const AddCustomer = () => {
             type="email"
             fullWidth
             required
+            autoComplete="off"
             value={customer.email}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
@@ -131,7 +152,7 @@ const AddCustomer = () => {
             name="address"
             label="Address"
             fullWidth
-            
+            autoComplete="off"
             value={customer.address}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
@@ -158,3 +179,7 @@ const AddCustomer = () => {
 };
 
 export default AddCustomer;
+
+function register(arg0: string): JSX.IntrinsicAttributes & import("@mui/material").TextFieldProps {
+  throw new Error("Function not implemented.");
+}

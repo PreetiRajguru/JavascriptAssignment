@@ -21,24 +21,38 @@ namespace CustomerLocationEF.WebAPI.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(new
+            try
             {
-                message = "Ok",
-                statusCode = StatusCodes.Status200OK,
-                result = _customerService.GetAll()
-            });
+                return Ok(new
+                {
+                    message = "Ok",
+                    statusCode = StatusCodes.Status200OK,
+                    result = _customerService.GetAll()
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         // GET api/<CustomerController>/5
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            return Ok(new
+            try
             {
-                message = "Ok",
-                statusCode = StatusCodes.Status200OK,
-                result = _customerService.GetById(id)
-            });
+                return Ok(new
+                {
+                    message = "Ok",
+                    statusCode = StatusCodes.Status200OK,
+                    result = _customerService.GetById(id)
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         // POST api/<CustomerController>
@@ -88,84 +102,85 @@ namespace CustomerLocationEF.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new
-                {
-                    message = "Error",
-                    statusCode = StatusCodes.Status500InternalServerError
-                });
+                return StatusCode(500, $"Error creating Customer: {ex.Message}");
             }
         }
-
-
-
-
-
-
-
-        // PUT api/<CustomerController>/5
-        [HttpPut("{id}")]
+        [HttpPut("id")]
         public IActionResult Update(int id, Customer customer)
         {
-            if (ModelState.IsValid)
+            try
             {
-                int response = _customerService.Update(id, customer);
-                return Ok(new
+                if (!ModelState.IsValid)
                 {
-                    message = "Ok",
-                    statusCode = StatusCodes.Status200OK,
-                    result = response
+                    return BadRequest(new
+                    {
+                        message = ModelState.ValidationState,
+                        statusCode = StatusCodes.Status400BadRequest
+                    });
+                }
+
+                bool isExist = _customerService.GetAll().Where(s => s.Email.ToLower() == customer.Email.ToLower() && s.Id!=id && !s.IsDeleted).Any();
+
+                if (isExist)
+                {
+                    return BadRequest(new
+                    {
+                        message = "Customer with same email already exists",
+                        statusCode = StatusCodes.Status400BadRequest
+                    });
+                }
+
+                int response = _customerService.Update(id, customer);
+
+                if (response>0)
+                {
+                    return Ok(new
+                    {
+                        message = "Ok",
+                        statusCode = StatusCodes.Status200OK,
+                        result = response
+                    });
+                }
+
+                return BadRequest(new
+                {
+                    message = "Customer with same email already exists",
+                    statusCode = StatusCodes.Status400BadRequest
                 });
             }
-            return BadRequest(new
+            catch (Exception ex)
             {
-                message = "Error",
-                statusCode = StatusCodes.Status400BadRequest
-            });
+                return StatusCode(500, $"Error updating Customer: {ex.Message}");
+            }
         }
 
-
-
-
-
-
-        /*
-                // PUT api/<CustomerController>/5
-                [HttpPut("{id}")]
-                public IActionResult Update(int id, Customer customer)
+        // DELETE api/<CustomerController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                if (_customerService.Delete(id))
                 {
-                    if (ModelState.IsValid)
+                    return Ok(new
                     {
-                        int response = _customerService.Update(id, customer);
-                        return Ok(new
-                        {
-                            message = "Ok",
-                            statusCode = StatusCodes.Status200OK,
-                            result = response
-                        });
-                    }
+                        message = "Ok",
+                        statusCode = StatusCodes.Status200OK,
+                    });
+                }
+                else
+                {
                     return BadRequest(new
                     {
                         message = "Error",
                         statusCode = StatusCodes.Status400BadRequest
                     });
                 }
-        */
-
-        // DELETE api/<CustomerController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            return _customerService.Delete(id)
-            ? Ok(new
+            }
+            catch (Exception ex)
             {
-                message = "Ok",
-                statusCode = StatusCodes.Status200OK,
-            })
-            : BadRequest(new
-            {
-                message = "Error",
-                statusCode = StatusCodes.Status400BadRequest
-            });
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

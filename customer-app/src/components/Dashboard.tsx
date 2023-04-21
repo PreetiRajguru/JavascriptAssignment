@@ -13,14 +13,6 @@ const Dashboard = () => {
     <div>
 
       <br></br>
-      <Breadcrumbs aria-label="breadcrumb" style={{marginLeft:'10px'}}>
-        <Link underline="hover" color="inherit" href="/add">
-          Add Customer
-        </Link>
-        <Link underline="hover" color="inherit" href="/customers">
-          View Customer
-        </Link>
-      </Breadcrumbs>
       <br></br>
 
       <Typography variant="h6" style={{ marginLeft: '510px' }}>Welcome to Customer CRUD Dashboard</Typography>
