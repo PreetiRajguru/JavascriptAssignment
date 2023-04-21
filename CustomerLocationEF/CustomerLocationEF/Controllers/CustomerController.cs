@@ -159,22 +159,17 @@ namespace CustomerLocationEF.WebAPI.Controllers
         {
             try
             {
-                if (_customerService.Delete(id))
-                {
-                    return Ok(new
+                return _customerService.Delete(id)
+                    ? Ok(new
                     {
                         message = "Ok",
                         statusCode = StatusCodes.Status200OK,
-                    });
-                }
-                else
-                {
-                    return BadRequest(new
+                    })
+                    : BadRequest(new
                     {
                         message = "Error",
                         statusCode = StatusCodes.Status400BadRequest
                     });
-                }
             }
             catch (Exception ex)
             {

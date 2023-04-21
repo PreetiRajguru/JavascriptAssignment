@@ -44,7 +44,6 @@ const Customers = () => {
   }, []);
 
   const handleDelete = async (e: any, id: number) => {
-    // e.stopImmediatePropogation();
     setSelectedCustomerIndex(-1);
     try {
       await axios.delete(`/api/Customer/${id}`);
@@ -56,10 +55,7 @@ const Customers = () => {
     }
   };
 
-  console.log(customers.length && customers[selectedCustomerIndex]);
-
   return (
-
     <Box sx={{ mt: 4 }}>
       <Typography variant="h4" align="center" mb={4}>
         Customers

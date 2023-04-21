@@ -35,11 +35,17 @@ namespace CustomerLocation.Services.Services
         {
             _context.Customers.Add(customer);
             _context.SaveChanges();
+
             return customer.Id;
         }
 
         public int Update(int id, Customer customer)
         {
+            //_context.Customers.Update(customer);
+            //_context.SaveChanges();
+
+            //return customer.Id;
+
             Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Email == customer.Email);
             if (existingCustomer != null)
             {
@@ -50,6 +56,7 @@ namespace CustomerLocation.Services.Services
                 existingCustomer.Email = customer.Email;
                 existingCustomer.Address = customer.Address;
                 _context.SaveChanges();
+
                 return customer.Id;
             }
             return 1;
@@ -57,6 +64,11 @@ namespace CustomerLocation.Services.Services
 
         public bool Delete(int id)
         {
+            //_context.Customers.Remove(customer);
+            //_context.SaveChanges();
+
+            //return customer.Id;
+
             Customer customer = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (customer != null)
             {
