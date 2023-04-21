@@ -12,7 +12,6 @@ namespace CustomerLocation.Services.Services
         bool Delete(int id);
     }
 
-
     public class CustomerService : ICustomer
     {
 
@@ -55,22 +54,6 @@ namespace CustomerLocation.Services.Services
             }
             return 1;
         }
-
-        /*   public int Update(int id, Customer customer)
-           {
-               Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Id == id);
-               if (existingCustomer != null)
-               {
-                   existingCustomer.FirstName = customer.FirstName;
-                   existingCustomer.LastName = customer.LastName;
-                   existingCustomer.DateOfBirth = customer.DateOfBirth;
-                   existingCustomer.PhoneNumber = customer.PhoneNumber;
-                   existingCustomer.Email = customer.Email;
-                   existingCustomer.Address = customer.Address;
-               }
-               _context.SaveChanges();
-               return customer.Id;
-           }*/
 
         public bool Delete(int id)
         {

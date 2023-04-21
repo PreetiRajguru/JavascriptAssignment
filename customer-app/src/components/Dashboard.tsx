@@ -6,15 +6,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import lp from '../../src/assets/landscape.png'
 
-
-
 const Dashboard = () => {
   return (
     <div>
-
       <br></br>
       <br></br>
-
       <Typography variant="h6" style={{ marginLeft: '510px' }}>Welcome to Customer CRUD Dashboard</Typography>
       <br></br>
       <Card sx={{ maxWidth: 500, marginLeft: '455px' }}>
@@ -36,8 +32,6 @@ const Dashboard = () => {
           <Button size="small">Learn More</Button>
         </CardActions>
       </Card>
-
-
     </div>
   );
 };

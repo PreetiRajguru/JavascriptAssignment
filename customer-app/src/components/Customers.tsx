@@ -43,7 +43,7 @@ const Customers = () => {
     fetchCustomers();
   }, []);
 
-  const handleDelete = async (e:any,id: number) => {
+  const handleDelete = async (e: any, id: number) => {
     // e.stopImmediatePropogation();
     setSelectedCustomerIndex(-1);
     try {
@@ -70,7 +70,7 @@ const Customers = () => {
         component={Link}
         to={`/add`}
         sx={{ marginLeft: 'auto', marginRight: 1 }}
-        style={{marginLeft:'15px'}}
+        style={{ marginLeft: '15px' }}
       >
         Add Customer
       </Button>
@@ -106,7 +106,7 @@ const Customers = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={(e) => handleDelete(e,customer.id)}
+                    onClick={(e) => handleDelete(e, customer.id)}
                     disabled={customer.address !== ''}
                   >
                     Delete
@@ -121,12 +121,12 @@ const Customers = () => {
         <Dialog open onClose={() => setSelectedCustomerIndex(-1)}>
           <DialogTitle>Customer data</DialogTitle>
           <DialogContent>
-          Name : {customers[selectedCustomerIndex].firstName}&nbsp;
-          {customers[selectedCustomerIndex].lastName}<br></br>
-          DOB : {customers[selectedCustomerIndex].dateOfBirth}<br></br>
-          Phone Number : {customers[selectedCustomerIndex].phoneNumber}<br></br>
-          Email : {customers[selectedCustomerIndex].email}<br></br>
-          Address : {customers[selectedCustomerIndex].address}<br></br>
+            Name : {customers[selectedCustomerIndex].firstName}&nbsp;
+            {customers[selectedCustomerIndex].lastName}<br></br>
+            DOB : {customers[selectedCustomerIndex].dateOfBirth}<br></br>
+            Phone Number : {customers[selectedCustomerIndex].phoneNumber}<br></br>
+            Email : {customers[selectedCustomerIndex].email}<br></br>
+            Address : {customers[selectedCustomerIndex].address}<br></br>
           </DialogContent>
         </Dialog>
       )}

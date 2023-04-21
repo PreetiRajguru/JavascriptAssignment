@@ -18,11 +18,11 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/add" element={<AddCustomer />} />
           <Route path="/" element={<Dashboard />} />
-          <Route path="/edit/:id" element={<EditCustomer/>} />
+          <Route path="/edit/:id" element={<EditCustomer />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </BrowserRouter>

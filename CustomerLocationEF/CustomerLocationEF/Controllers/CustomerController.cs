@@ -2,8 +2,6 @@
 using CustomerLocationEF.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace CustomerLocationEF.WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -105,7 +103,8 @@ namespace CustomerLocationEF.WebAPI.Controllers
                 return StatusCode(500, $"Error creating Customer: {ex.Message}");
             }
         }
-        [HttpPut("id")]
+
+        [HttpPut("{id}")]
         public IActionResult Update(int id, Customer customer)
         {
             try
@@ -132,7 +131,7 @@ namespace CustomerLocationEF.WebAPI.Controllers
 
                 int response = _customerService.Update(id, customer);
 
-                if (response>0)
+                if (response > 0)
                 {
                     return Ok(new
                     {
@@ -144,7 +143,7 @@ namespace CustomerLocationEF.WebAPI.Controllers
 
                 return BadRequest(new
                 {
-                    message = "Customer with same email already exists",
+                    message = "Error",
                     statusCode = StatusCodes.Status400BadRequest
                 });
             }

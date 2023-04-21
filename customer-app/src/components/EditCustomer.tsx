@@ -8,7 +8,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { log } from "console";
 
 interface Customer {
   id: number;
@@ -53,37 +52,21 @@ const EditCustomer = () => {
     setCustomer((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   try {
-  //     await axios.put(`/api/Customer/${id}`, customer);
-  //     history("/customers");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-
-
-
-
-
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(customer)
     try {
-      axios.put(`/api/Customer/id?id=${id}`, customer).then(s =>{
+      axios.put(`/api/Customer/${id}`, customer).then(s => {
         console.log(s);
         history("/customers");
-      },error =>{
+      }, error => {
         console.log(error);
-        
+
         alert(error.response.data.message);
       }
       );
     } catch (error) {
-      
+
       console.error(error);
     }
   };
@@ -127,7 +110,7 @@ const EditCustomer = () => {
             type="date"
             fullWidth
             required
-            value={customer.dateOfBirth}
+            value={customer.dateOfBirth.split('T')[0]}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
           />

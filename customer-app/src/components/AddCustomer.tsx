@@ -47,28 +47,27 @@ const AddCustomer = () => {
     const validPhone = /^[0-9]{10}$/;
     const resultNumber = validPhone.test(newCustomer.phoneNumber);
     const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
-   const result = pattern.test(newCustomer.email);
+    const result = pattern.test(newCustomer.email);
 
-    if(resultNumber==false)
-    {
+    if (resultNumber == false) {
       alert("Incorrect Phone Number");
     }
-    else if(result===false){
-    alert("Incorrect Email Format");
-   } 
-else{
-  try {
-    axios.post("/api/Customer", customer).then(s => {
-    console.log(s);
-    navigate("/customers");
-  }, error => {
-    alert(error.response.data.message);
-  });
-} catch (error) {
-  console.error(error);
-}
-}
-    
+    else if (result === false) {
+      alert("Incorrect Email Format");
+    }
+    else {
+      try {
+        axios.post("/api/Customer", customer).then(s => {
+          console.log(s);
+          navigate("/customers");
+        }, error => {
+          alert(error.response.data.message);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
   };
 
   const handleInputChange = (
