@@ -4,9 +4,6 @@ import axios from "axios";
 import {
   Box,
   Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
   Paper,
   Table,
   TableBody,
@@ -16,8 +13,9 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import Modal from "./Modal";
 
-interface Customer {
+export interface Customer {
   id: number;
   firstName: string;
   lastName: string;
@@ -114,17 +112,7 @@ const Customers = () => {
         </Table>
       </TableContainer>
       {selectedCustomerIndex !== -1 && customers[selectedCustomerIndex]?.email && (
-        <Dialog open onClose={() => setSelectedCustomerIndex(-1)}>
-          <DialogTitle>Customer data</DialogTitle>
-          <DialogContent>
-            Name : {customers[selectedCustomerIndex].firstName}&nbsp;
-            {customers[selectedCustomerIndex].lastName}<br></br>
-            DOB : {customers[selectedCustomerIndex].dateOfBirth}<br></br>
-            Phone Number : {customers[selectedCustomerIndex].phoneNumber}<br></br>
-            Email : {customers[selectedCustomerIndex].email}<br></br>
-            Address : {customers[selectedCustomerIndex].address}<br></br>
-          </DialogContent>
-        </Dialog>
+        <Modal onClose={() => setSelectedCustomerIndex(-1)} customer={customers[selectedCustomerIndex]}/> 
       )}
     </Box>
   );
