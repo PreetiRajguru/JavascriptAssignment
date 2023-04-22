@@ -40,12 +40,24 @@ namespace CustomerLocationEF.WebAPI.Controllers
         {
             try
             {
-                return Ok(new
+
+                if(id == 0)
                 {
-                    message = "Ok",
-                    statusCode = StatusCodes.Status200OK,
-                    result = _customerService.GetById(id)
-                });
+                    return BadRequest(new
+                    {
+                        message = "Invalid Id",
+                        statusCode = StatusCodes.Status400BadRequest
+                    });
+                }
+                else
+                {
+                    return Ok(new
+                    {
+                        message = "Ok",
+                        statusCode = StatusCodes.Status200OK,
+                        result = _customerService.GetById(id)
+                    });
+                }
             }
             catch (Exception ex)
             {

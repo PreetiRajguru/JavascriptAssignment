@@ -16,7 +16,6 @@ namespace CustomerLocationEF.Data.Context
         {
             if (!optionsBuilder.IsConfigured) 
             {
-               // optionsBuilder.UseSqlServer("Server=localhost;Database=Customer;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=True;");
             }
         }
 

@@ -68,7 +68,7 @@ const Navigation = () => {
         open={Open}
         onClose={handleClose}
       >
-        <MenuItem component={Link} to="/add" onClick={handleClose}>
+        <MenuItem component={Link} to="/customers/add" onClick={handleClose}>
           <ListItemIcon>
             <AddIcon />
           </ListItemIcon>

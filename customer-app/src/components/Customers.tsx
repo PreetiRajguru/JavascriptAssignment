@@ -26,7 +26,17 @@ export interface Customer {
 }
 
 const Customers = () => {
-  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [customers, setCustomers] = useState<Customer[]>([
+      {
+        id: 0,
+        firstName: "aa",
+        lastName: "ss",
+        dateOfBirth: "ss",
+        phoneNumber: "ss",
+        email: "ss",
+        address: "ss",
+      }
+  ]);
   const [selectedCustomerIndex, setSelectedCustomerIndex] = useState<number>(-1);
 
   useEffect(() => {
@@ -62,7 +72,7 @@ const Customers = () => {
         variant="contained"
         color="primary"
         component={Link}
-        to={`/add`}
+        to={`/customers/add`}
         sx={{ marginLeft: 'auto', marginRight: 1 }}
         style={{ marginLeft: '15px' }}
       >
@@ -92,7 +102,7 @@ const Customers = () => {
                     variant="contained"
                     color="primary"
                     component={Link}
-                    to={`/edit/${customer.id}`}
+                    to={`/customers/edit/${customer.id}`}
                     sx={{ mr: 1 }}
                   >
                     Edit

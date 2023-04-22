@@ -41,10 +41,10 @@ namespace CustomerLocation.Services.Services
 
         public int Update(int id, Customer customer)
         {
-            //_context.Customers.Update(customer);
-            //_context.SaveChanges();
+            /*_context.Customers.Update(customer);
+            _context.SaveChanges();
 
-            //return customer.Id;
+            return customer.Id;*/
 
             Customer existingCustomer = _context.Customers.FirstOrDefault(c => c.Email == customer.Email);
             if (existingCustomer != null)
