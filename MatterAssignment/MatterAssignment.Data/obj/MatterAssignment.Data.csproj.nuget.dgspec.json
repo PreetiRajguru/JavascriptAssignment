@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {}
+    "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {}
   },
   "projects": {
-    "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {
+    "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj",
+        "projectUniqueName": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj",
         "projectName": "MatterAssignment.Data",
-        "projectPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj",
+        "projectPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\obj\\",
+        "outputPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

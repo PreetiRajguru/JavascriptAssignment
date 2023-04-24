@@ -6067,11 +6067,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj",
+      "projectUniqueName": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj",
       "projectName": "MatterAssignment.Services",
-      "projectPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj",
+      "projectPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Services\\obj\\",
+      "outputPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6088,8 +6088,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {
-              "projectPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj"
+            "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {
+              "projectPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj"
             }
           }
         }

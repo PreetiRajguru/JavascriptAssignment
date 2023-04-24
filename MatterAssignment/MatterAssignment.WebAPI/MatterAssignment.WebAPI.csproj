@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MatterAssignment.Data\MatterAssignment.Data.csproj" />
     <ProjectReference Include="..\MatterAssignment.Services\MatterAssignment.Services.csproj" />
   </ItemGroup>

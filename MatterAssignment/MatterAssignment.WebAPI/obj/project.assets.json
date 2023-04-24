@@ -6301,11 +6301,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.WebAPI\\MatterAssignment.WebAPI.csproj",
+      "projectUniqueName": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.WebAPI\\MatterAssignment.WebAPI.csproj",
       "projectName": "MatterAssignment.WebAPI",
-      "projectPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.WebAPI\\MatterAssignment.WebAPI.csproj",
+      "projectPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.WebAPI\\MatterAssignment.WebAPI.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.WebAPI\\obj\\",
+      "outputPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6322,11 +6322,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {
-              "projectPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj"
+            "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj": {
+              "projectPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Data\\MatterAssignment.Data.csproj"
             },
-            "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj": {
-              "projectPath": "D:\\Preeti\\LastTry\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj"
+            "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj": {
+              "projectPath": "D:\\Preeti\\MatterAssignment\\JavascriptAssignment\\MatterAssignment\\MatterAssignment.Services\\MatterAssignment.Services.csproj"
             }
           }
         }
