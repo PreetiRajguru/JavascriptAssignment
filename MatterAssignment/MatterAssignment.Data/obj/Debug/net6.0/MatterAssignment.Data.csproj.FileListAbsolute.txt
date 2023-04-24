@@ -1,0 +1,14 @@
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\bin\Debug\net6.0\MatterAssignment.Data.deps.json
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\bin\Debug\net6.0\MatterAssignment.Data.runtimeconfig.json
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\bin\Debug\net6.0\MatterAssignment.Data.dll
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\bin\Debug\net6.0\MatterAssignment.Data.pdb
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.csproj.AssemblyReference.cache
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.AssemblyInfoInputs.cache
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.AssemblyInfo.cs
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.csproj.CoreCompileInputs.cache
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.dll
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\refint\MatterAssignment.Data.dll
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.pdb
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\MatterAssignment.Data.genruntimeconfig.cache
+D:\Preeti\LastTry\MatterAssignment\MatterAssignment.Data\obj\Debug\net6.0\ref\MatterAssignment.Data.dll
