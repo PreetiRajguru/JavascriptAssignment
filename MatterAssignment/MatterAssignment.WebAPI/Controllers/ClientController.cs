@@ -26,6 +26,33 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
+        [HttpGet("{id}")]
+        public ActionResult<ClientDTO> GetById(int id)
+        {
+            var client = _clientService.GetById(id);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(client);
+        }
+
+
+        [HttpPost]
+        public ActionResult<ClientDTO> Create([FromBody] ClientDTO clientDto)
+        {
+            if (clientDto == null)
+            {
+                return BadRequest("Client data is null.");
+            }
+
+            var createdClient = _clientService.Create(clientDto);
+
+            // return 201 Created response with location header
+            return CreatedAtAction(nameof(GetById), new { id = createdClient.Id }, createdClient);
+        }
 
     }
 }
