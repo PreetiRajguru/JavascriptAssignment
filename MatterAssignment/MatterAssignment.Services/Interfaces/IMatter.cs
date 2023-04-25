@@ -10,9 +10,6 @@ namespace MatterAssignment.Services.Interfaces
         void DeleteMatter(int id);
         IEnumerable<MatterDTO> GetMattersByClientId(int clientId);
 
-
-
+        Dictionary<int, List<MatterDTO>> GetMattersGroupedByClientId();
     }
-
-
 }

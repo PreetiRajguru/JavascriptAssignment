@@ -29,7 +29,7 @@ namespace MatterAssignment.Services.Services
 
         public InvoiceDTO GetInvoiceById(int id)
         {
-            var invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
+            Invoice invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
             if (invoice == null) return null;
             return new InvoiceDTO
             {
@@ -42,7 +42,7 @@ namespace MatterAssignment.Services.Services
 
         public void CreateInvoice(InvoiceDTO invoice)
         {
-            var newInvoice = new Invoice
+            Invoice newInvoice = new Invoice
             {
                 HoursWorked = invoice.HoursWorked,
                 AttorneyId = invoice.AttorneyId,
@@ -55,7 +55,7 @@ namespace MatterAssignment.Services.Services
 
         public void DeleteInvoice(int id)
         {
-            var invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
+            Invoice invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
             if (invoice == null) return;
             _dbContext.Invoices.Remove(invoice);
             _dbContext.SaveChanges();
@@ -65,9 +65,9 @@ namespace MatterAssignment.Services.Services
 
         public InvoiceDTO GetInvoiceByMatterId(int matterId)
         {
-            using (var dbContext = new MatterAssignmentDbContext())
+            using (MatterAssignmentDbContext dbContext = new MatterAssignmentDbContext())
             {
-                var invoice = dbContext.Invoices
+                Invoice invoice = dbContext.Invoices
                     .Where(i => i.MatterId == matterId)
                     .Include(i => i.Attorney)
                     .FirstOrDefault();
@@ -77,7 +77,7 @@ namespace MatterAssignment.Services.Services
                     return null;
                 }
 
-                var invoiceDTO = new InvoiceDTO
+                InvoiceDTO invoiceDTO = new InvoiceDTO
                 {
                     Id = invoice.Id,
                     HoursWorked = invoice.HoursWorked,
@@ -89,7 +89,18 @@ namespace MatterAssignment.Services.Services
             }
         }
 
+        public Dictionary<int, List<InvoiceDTO>> GetInvoicesGroupedByMatterId()
+        {
+            List<Invoice> invoices = _dbContext.Invoices.ToList();
 
-        
+            Dictionary<int, List<InvoiceDTO>> groupedInvoices = invoices.GroupBy(i => i.MatterId)
+                                          .ToDictionary(g => g.Key,
+                                                        g => g.Select(i => new InvoiceDTO
+                                                        {
+                                                            HoursWorked = i.HoursWorked,
+                                                            AttorneyId = i.AttorneyId
+                                                        }).ToList());
+            return groupedInvoices;
+        }
     }
 }

@@ -68,7 +68,13 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
-        
+        [HttpGet("grouped-by-client")]
+        public IActionResult GetMattersGroupedByClient()
+        {
+            var groupedMatters = _matterService.GetMattersGroupedByClientId();
+
+            return Ok(groupedMatters);
+        }
 
     }
 

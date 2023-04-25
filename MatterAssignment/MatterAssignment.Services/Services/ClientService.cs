@@ -31,7 +31,7 @@ namespace MatterAssignment.Services.Services
 
         public ClientDTO GetById(int id)
         {
-            var client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
+            Client client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
             if (client != null)
             {
                 return new ClientDTO
@@ -49,7 +49,7 @@ namespace MatterAssignment.Services.Services
 
         public ClientDTO Create(ClientDTO client)
         {
-            var newClient = new Client
+            Client newClient = new Client
             {
                 FirstName = client.FirstName,
                 LastName = client.LastName,
@@ -65,7 +65,7 @@ namespace MatterAssignment.Services.Services
 
         public bool Delete(int id)
         {
-            var client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
+            Client client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
             if (client != null)
             {
                 _dbContext.Clients.Remove(client);

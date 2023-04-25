@@ -31,7 +31,7 @@ namespace MatterAssignment.Services.Services
 
         public MatterDTO GetMatterById(int id)
         {
-            var matter = _context.Matters.Find(id);
+            Matter matter = _context.Matters.Find(id);
             if (matter == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace MatterAssignment.Services.Services
 
         public MatterDTO CreateMatter(MatterDTO matterDto)
         {
-            var matter = new Matter
+            Matter matter = new Matter
             {
                 Title = matterDto.Title,
                 Description = matterDto.Description,
@@ -70,7 +70,7 @@ namespace MatterAssignment.Services.Services
 
         public void DeleteMatter(int id)
         {
-            var matter = _context.Matters.Find(id);
+            Matter matter = _context.Matters.Find(id);
             if (matter != null)
             {
                 _context.Matters.Remove(matter);
@@ -80,7 +80,7 @@ namespace MatterAssignment.Services.Services
 
         public IEnumerable<MatterDTO> GetMattersByClientId(int clientId)
         {
-            var matters = _context.Matters
+            List<MatterDTO> matters = _context.Matters
                 .Where(m => m.ClientId == clientId)
                 .Select(m => new MatterDTO
                 {
@@ -97,7 +97,22 @@ namespace MatterAssignment.Services.Services
             return matters;
         }
 
-       
-    }
+        public Dictionary<int, List<MatterDTO>> GetMattersGroupedByClientId()
+        {
+            List<Matter> matters = _context.Matters.ToList();
 
+            Dictionary<int, List<MatterDTO>> groupedMatters = matters.GroupBy(m => m.ClientId)
+                                        .ToDictionary(g => g.Key,
+                                                      g => g.Select(m => new MatterDTO
+                                                      {
+                                                          Title = m.Title,
+                                                          Description = m.Description,
+                                                          BillingAttorneyId = m.BillingAttorneyId,
+                                                          ResponsibleAttorneyId = m.ResponsibleAttorneyId,
+                                                          JurisdictionId = m.JurisdictionId
+                                                      }).ToList());
+
+            return groupedMatters;
+        }
+    }
 }

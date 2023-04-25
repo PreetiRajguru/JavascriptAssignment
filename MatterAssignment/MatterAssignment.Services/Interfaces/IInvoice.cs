@@ -9,6 +9,6 @@ namespace MatterAssignment.Services.Interfaces
         void CreateInvoice(InvoiceDTO invoice);
         void DeleteInvoice(int id);
         InvoiceDTO GetInvoiceByMatterId(int matterId);
-
+        Dictionary<int, List<InvoiceDTO>> GetInvoicesGroupedByMatterId();
     }
 }

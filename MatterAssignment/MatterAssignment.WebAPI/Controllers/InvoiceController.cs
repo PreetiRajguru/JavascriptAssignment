@@ -58,6 +58,13 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
+        [HttpGet("grouped-by-matter")]
+        public IActionResult GetInvoicesGroupedByMatter()
+        {
+            var groupedInvoices = _invoiceService.GetInvoicesGroupedByMatterId();
+
+            return Ok(groupedInvoices);
+        }
 
     }
 }
