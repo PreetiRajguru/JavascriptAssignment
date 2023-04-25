@@ -18,7 +18,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllJurisdictionMasters()
         {
-            var jurisdictions = _jurisdictionMasterService.GetAll();
+            IEnumerable<JurisdictionMasterDTO> jurisdictions = _jurisdictionMasterService.GetAll();
 
             return Ok(jurisdictions);
         }
@@ -26,7 +26,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetJurisdictionMasterById(int id)
         {
-            var jurisdiction = _jurisdictionMasterService.GetById(id);
+            JurisdictionMasterDTO jurisdiction = _jurisdictionMasterService.GetById(id);
 
             if (jurisdiction == null)
             {

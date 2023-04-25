@@ -18,13 +18,13 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<InvoiceDTO> GetAll()
         {
-            return _invoiceService.GetAllInvoices();
+            return _invoiceService.GetAll();
         }
 
         [HttpGet("{id}")]
         public ActionResult<InvoiceDTO> GetById(int id)
         {
-            var invoice = _invoiceService.GetById(id);
+            InvoiceDTO invoice = _invoiceService.GetById(id);
             if (invoice == null) return NotFound();
             return invoice;
         }
@@ -47,7 +47,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("matter/{matterId}")]
         public ActionResult<InvoiceDTO> GetInvoiceByMatter(int matterId)
         {
-            var invoiceDto = _invoiceService.GetInvoiceByMatter(matterId);
+            InvoiceDTO invoiceDto = _invoiceService.GetInvoiceByMatter(matterId);
 
             if (invoiceDto == null)
             {
@@ -61,7 +61,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("matter")]
         public IActionResult GetInvoicesForMatters()
         {
-            var groupedInvoices = _invoiceService.GetInvoicesForMatters();
+            Dictionary<int, List<InvoiceDTO>> groupedInvoices = _invoiceService.GetInvoicesForMatters();
 
             return Ok(groupedInvoices);
         }
@@ -70,7 +70,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("billing/{attorneyId}")]
         public IActionResult GetBillingByAttorney(int attorneyId)
         {
-            var totalBilling = _invoiceService.GetBillingByAttorney(attorneyId);
+            double totalBilling = _invoiceService.GetBillingByAttorney(attorneyId);
 
             if (totalBilling == null)
             {

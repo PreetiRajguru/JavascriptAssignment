@@ -19,14 +19,14 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllMatters()
         {
-            var matters = _matterService.GetAll();
+            IEnumerable<MatterDTO> matters = _matterService.GetAll();
             return Ok(matters);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMatterById(int id)
         {
-            var matter = _matterService.GetById(id);
+            MatterDTO matter = _matterService.GetById(id);
             if (matter == null)
             {
                 return NotFound();
@@ -43,7 +43,7 @@ namespace MatterAssignment.WebAPI.Controllers
                 return BadRequest();
             }
 
-            var createdMatter = _matterService.Create(matterDto);
+            MatterDTO createdMatter = _matterService.Create(matterDto);
             return CreatedAtAction(nameof(GetMatterById), new { id = createdMatter.Id }, createdMatter);
         }
 
@@ -57,7 +57,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("client/{clientId}")]
         public IActionResult GetMattersByClientId(int clientId)
         {
-            var matters = _matterService.GetMattersByClientId(clientId);
+            IEnumerable<MatterDTO> matters = _matterService.GetMattersByClientId(clientId);
 
             if (matters == null)
             {
@@ -71,7 +71,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("client")]
         public IActionResult GetMattersGroupedByClient()
         {
-            var groupedMatters = _matterService.GetMattersGroupedByClientId();
+            Dictionary<int, List<MatterDTO>> groupedMatters = _matterService.GetMattersGroupedByClientId();
 
             return Ok(groupedMatters);
         }

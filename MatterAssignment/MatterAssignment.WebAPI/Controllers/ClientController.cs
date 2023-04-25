@@ -23,14 +23,14 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var clients = _clientService.GetAll();
+            IEnumerable<ClientDTO> clients = _clientService.GetAll();
             return Ok(clients);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var client = _clientService.GetById(id);
+            ClientDTO client = _clientService.GetById(id);
             if (client != null)
             {
                 return Ok(client);
@@ -41,7 +41,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpPost]
         public IActionResult Create(ClientDTO client)
         {
-            var newClient = _clientService.Create(client);
+            ClientDTO newClient = _clientService.Create(client);
             return CreatedAtAction(nameof(GetById), new { id = newClient.Id }, newClient);
         }
 

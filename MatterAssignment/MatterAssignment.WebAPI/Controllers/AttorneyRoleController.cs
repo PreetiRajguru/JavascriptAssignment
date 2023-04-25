@@ -20,7 +20,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var attorneyRoles = _attorneyRoleService.GetAll();
+            IEnumerable<AttorneyRoleDTO> attorneyRoles = _attorneyRoleService.GetAll();
 
             return Ok(attorneyRoles);
         }
@@ -28,7 +28,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var attorneyRole = _attorneyRoleService.GetById(id);
+            AttorneyRoleDTO attorneyRole = _attorneyRoleService.GetById(id);
 
             if (attorneyRole == null)
             {
