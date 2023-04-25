@@ -45,9 +45,9 @@ namespace MatterAssignment.WebAPI.Controllers
 
 
         [HttpGet("matter/{matterId}")]
-        public ActionResult<InvoiceDTO> GetInvoiceByMatterId(int matterId)
+        public ActionResult<InvoiceDTO> GetInvoiceByMatter(int matterId)
         {
-            var invoiceDto = _invoiceService.GetInvoiceByMatterId(matterId);
+            var invoiceDto = _invoiceService.GetInvoiceByMatter(matterId);
 
             if (invoiceDto == null)
             {
@@ -58,12 +58,29 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
-        [HttpGet("grouped-by-matter")]
-        public IActionResult GetInvoicesGroupedByMatter()
+        [HttpGet("for-matter")]
+        public IActionResult GetInvoicesForMatters()
         {
-            var groupedInvoices = _invoiceService.GetInvoicesGroupedByMatterId();
+            var groupedInvoices = _invoiceService.GetInvoicesForMatters();
 
             return Ok(groupedInvoices);
+        }
+
+
+
+        [HttpGet("billing/{attorneyId}")]
+        public IActionResult GetBillingByAttorney(int attorneyId)
+        {
+            var totalBilling = _invoiceService.GetBillingByAttorney(attorneyId);
+           /* return Ok(new { AttorneyId = attorneyId, Billing = totalBilling });*/
+
+
+            if (totalBilling == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new { AttorneyId = attorneyId, Billing = totalBilling });
         }
 
     }

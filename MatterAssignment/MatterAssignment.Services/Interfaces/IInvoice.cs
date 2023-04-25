@@ -8,7 +8,9 @@ namespace MatterAssignment.Services.Interfaces
         InvoiceDTO GetInvoiceById(int id);
         void CreateInvoice(InvoiceDTO invoice);
         void DeleteInvoice(int id);
-        InvoiceDTO GetInvoiceByMatterId(int matterId);
-        Dictionary<int, List<InvoiceDTO>> GetInvoicesGroupedByMatterId();
+        InvoiceDTO GetInvoiceByMatter(int matterId);
+        Dictionary<int, List<InvoiceDTO>> GetInvoicesForMatters();
+
+        double GetBillingByAttorney(int attorneyId);
     }
 }

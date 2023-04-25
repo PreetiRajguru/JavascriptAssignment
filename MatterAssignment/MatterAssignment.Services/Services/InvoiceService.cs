@@ -68,7 +68,7 @@ namespace MatterAssignment.Services.Services
             _dbContext.SaveChanges();
         }
 
-        public InvoiceDTO GetInvoiceByMatterId(int matterId)
+        public InvoiceDTO GetInvoiceByMatter(int matterId)
         {
             using (MatterAssignmentDbContext dbContext = new MatterAssignmentDbContext())
             {
@@ -96,7 +96,7 @@ namespace MatterAssignment.Services.Services
             }
         }
 
-        public Dictionary<int, List<InvoiceDTO>> GetInvoicesGroupedByMatterId()
+        public Dictionary<int, List<InvoiceDTO>> GetInvoicesForMatters()
         {
             List<Invoice> invoices = _dbContext.Invoices.ToList();
 
@@ -111,5 +111,19 @@ namespace MatterAssignment.Services.Services
                                                         }).ToList());
             return groupedInvoices;
         }
+
+        public double GetBillingByAttorney(int attorneyId)
+        {
+            DateTime today = DateTime.Today;
+            DateTime previousWeekStart = today.AddDays(-(int)today.DayOfWeek - 6);
+            DateTime previousWeekEnd = previousWeekStart.AddDays(6);
+
+            decimal billing = _dbContext.Invoices
+                .Where(i => i.AttorneyId == attorneyId && i.InvoiceDate >= previousWeekStart && i.InvoiceDate <= previousWeekEnd)
+                .Sum(im => im.TotalAmount);
+
+            return Convert.ToDouble(billing);
+        }
+
     }
 }
