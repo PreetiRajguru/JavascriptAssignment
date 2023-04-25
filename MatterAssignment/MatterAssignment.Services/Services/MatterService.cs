@@ -15,7 +15,7 @@ namespace MatterAssignment.Services.Services
             _context = context;
         }
 
-        public IEnumerable<MatterDTO> GetAllMatters()
+        public IEnumerable<MatterDTO> GetAll()
         {
             return _context.Matters.Select(m => new MatterDTO
             {
@@ -29,7 +29,7 @@ namespace MatterAssignment.Services.Services
             });
         }
 
-        public MatterDTO GetMatterById(int id)
+        public MatterDTO GetById(int id)
         {
             Matter matter = _context.Matters.Find(id);
             if (matter == null)
@@ -49,7 +49,7 @@ namespace MatterAssignment.Services.Services
             };
         }
 
-        public MatterDTO CreateMatter(MatterDTO matterDto)
+        public MatterDTO Create(MatterDTO matterDto)
         {
             Matter matter = new Matter
             {
@@ -68,7 +68,7 @@ namespace MatterAssignment.Services.Services
             return matterDto;
         }
 
-        public void DeleteMatter(int id)
+        public void Delete(int id)
         {
             Matter matter = _context.Matters.Find(id);
             if (matter != null)

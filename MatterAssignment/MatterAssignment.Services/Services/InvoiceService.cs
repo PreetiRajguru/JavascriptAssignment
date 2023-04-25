@@ -16,7 +16,7 @@ namespace MatterAssignment.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<InvoiceDTO> GetAllInvoices()
+        public IEnumerable<InvoiceDTO> GetAll()
         {
             return _dbContext.Invoices.Select(i => new InvoiceDTO
             {
@@ -29,7 +29,7 @@ namespace MatterAssignment.Services.Services
             });
         }
 
-        public InvoiceDTO GetInvoiceById(int id)
+        public InvoiceDTO GetById(int id)
         {
             Invoice invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
             if (invoice == null) return null;
@@ -44,7 +44,7 @@ namespace MatterAssignment.Services.Services
             };
         }
 
-        public void CreateInvoice(InvoiceDTO invoice)
+        public void Create(InvoiceDTO invoice)
         {
             decimal attorneyRate = _dbContext.Attorneys.Where(a => a.Id ==  invoice.AttorneyId).Select (  a => a.Rate).First();
             Invoice newInvoice = new Invoice
@@ -60,7 +60,7 @@ namespace MatterAssignment.Services.Services
             invoice.Id = newInvoice.Id;
         }
 
-        public void DeleteInvoice(int id)
+        public void Delete(int id)
         {
             Invoice invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
             if (invoice == null) return;

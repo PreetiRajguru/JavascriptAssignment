@@ -14,7 +14,7 @@ namespace MatterAssignment.Services.Services
             _context = context;
         }
 
-        public IEnumerable<JurisdictionMasterDTO> GetAllJurisdictionMasters()
+        public IEnumerable<JurisdictionMasterDTO> GetAll()
         {
             return _context.JurisdictionMaster
                 .Select(j => new JurisdictionMasterDTO
@@ -24,7 +24,7 @@ namespace MatterAssignment.Services.Services
                 });
 }
 
-        public JurisdictionMasterDTO GetJurisdictionMasterById(int id)
+        public JurisdictionMasterDTO GetById(int id)
         {
             JurisdictionMasterDTO jurisdiction = _context.JurisdictionMaster
                 .Where(j => j.Id == id)
@@ -38,7 +38,7 @@ namespace MatterAssignment.Services.Services
             return jurisdiction;
         }
 
-        public void CreateJurisdictionMaster(JurisdictionMasterDTO jurisdictionMaster)
+        public void Create(JurisdictionMasterDTO jurisdictionMaster)
         {
             JurisdictionMaster newJurisdiction = new JurisdictionMaster
             {
@@ -49,7 +49,7 @@ namespace MatterAssignment.Services.Services
             _context.SaveChanges();
         }
 
-        public void DeleteJurisdictionMaster(int id)
+        public void Delete(int id)
         {
             JurisdictionMaster jurisdiction = _context.JurisdictionMaster.Find(id);
 

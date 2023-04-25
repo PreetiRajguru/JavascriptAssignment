@@ -4,10 +4,10 @@ namespace MatterAssignment.Services.Interfaces
 {
     public interface IInvoice
     {
-        IEnumerable<InvoiceDTO> GetAllInvoices();
-        InvoiceDTO GetInvoiceById(int id);
-        void CreateInvoice(InvoiceDTO invoice);
-        void DeleteInvoice(int id);
+        IEnumerable<InvoiceDTO> GetAll();
+        InvoiceDTO GetById(int id);
+        void Create(InvoiceDTO invoice);
+        void Delete(int id);
         InvoiceDTO GetInvoiceByMatter(int matterId);
         Dictionary<int, List<InvoiceDTO>> GetInvoicesForMatters();
 

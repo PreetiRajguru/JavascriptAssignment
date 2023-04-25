@@ -24,7 +24,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<InvoiceDTO> GetById(int id)
         {
-            var invoice = _invoiceService.GetInvoiceById(id);
+            var invoice = _invoiceService.GetById(id);
             if (invoice == null) return NotFound();
             return invoice;
         }
@@ -32,19 +32,19 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpPost]
         public ActionResult<InvoiceDTO> Create(InvoiceDTO invoice)
         {
-            _invoiceService.CreateInvoice(invoice);
+            _invoiceService.Create(invoice);
             return CreatedAtAction(nameof(GetById), new { id = invoice.Id }, invoice);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _invoiceService.DeleteInvoice(id);
+            _invoiceService.Delete(id);
             return NoContent();
         }
 
 
-        [HttpGet("for-matter/{matterId}")]
+        [HttpGet("matter/{matterId}")]
         public ActionResult<InvoiceDTO> GetInvoiceByMatter(int matterId)
         {
             var invoiceDto = _invoiceService.GetInvoiceByMatter(matterId);
@@ -58,7 +58,7 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
-        [HttpGet("by-matter")]
+        [HttpGet("matter")]
         public IActionResult GetInvoicesForMatters()
         {
             var groupedInvoices = _invoiceService.GetInvoicesForMatters();

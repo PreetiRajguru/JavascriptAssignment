@@ -17,17 +17,17 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllAttorneys()
+        public IActionResult GetAll()
         {
-            var attorneys = _attorneyService.GetAllAttorneys();
+            var attorneys = _attorneyService.GetAll();
 
             return Ok(attorneys);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetAttorneyById(int id)
+        public IActionResult GetById(int id)
         {
-            var attorney = _attorneyService.GetAttorneyById(id);
+            var attorney = _attorneyService.GetById(id);
 
             if (attorney == null)
             {
@@ -38,22 +38,22 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAttorney([FromBody] AttorneyDTO attorney)
+        public IActionResult Create([FromBody] AttorneyDTO attorney)
         {
             if (attorney == null)
             {
                 return BadRequest();
             }
 
-            _attorneyService.CreateAttorney(attorney);
+            _attorneyService.Create(attorney);
 
-            return CreatedAtRoute(nameof(GetAttorneyById), new { id = attorney.Id }, attorney);
+            return CreatedAtRoute(nameof(GetById), new { id = attorney.Id }, attorney);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteAttorney(int id)
+        public IActionResult Delete(int id)
         {
-            _attorneyService.DeleteAttorney(id);
+            _attorneyService.Delete(id);
 
             return NoContent();
         }

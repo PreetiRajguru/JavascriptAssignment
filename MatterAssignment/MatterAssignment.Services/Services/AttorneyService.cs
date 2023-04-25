@@ -14,7 +14,7 @@ namespace MatterAssignment.Services.Services
             _context = context;
         }
 
-        public IEnumerable<AttorneyDTO> GetAllAttorneys()
+        public IEnumerable<AttorneyDTO> GetAll()
         {
             List<AttorneyDTO> attorneys = _context.Attorneys
                 .Select(a => new AttorneyDTO
@@ -29,7 +29,7 @@ namespace MatterAssignment.Services.Services
             return attorneys;
         }
 
-        public AttorneyDTO GetAttorneyById(int id)
+        public AttorneyDTO GetById(int id)
         {
             AttorneyDTO attorney = _context.Attorneys
                 .Where(a => a.Id == id)
@@ -45,7 +45,7 @@ namespace MatterAssignment.Services.Services
             return attorney;
         }
 
-        public void CreateAttorney(AttorneyDTO attorney)
+        public void Create(AttorneyDTO attorney)
         {
             Attorney newAttorney = new Attorney
             {
@@ -58,7 +58,7 @@ namespace MatterAssignment.Services.Services
             _context.SaveChanges();
         }
 
-        public void DeleteAttorney(int id)
+        public void Delete(int id)
         {
             Attorney attorney = _context.Attorneys.Find(id);
 

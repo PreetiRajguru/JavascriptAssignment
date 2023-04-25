@@ -9,9 +9,9 @@ namespace MatterAssignment.Services.Interfaces
 {
     public interface IAttorneyRole
     {
-        IEnumerable<AttorneyRoleDTO> GetAllAttorneyRoles();
-        AttorneyRoleDTO GetAttorneyRoleById(int id);
-        void CreateAttorneyRole(AttorneyRoleDTO attorneyRole);
-        void DeleteAttorneyRole(int id);
+        IEnumerable<AttorneyRoleDTO> GetAll();
+        AttorneyRoleDTO GetById(int id);
+        void Create(AttorneyRoleDTO attorneyRole);
+        void Delete(int id);
     }
 }

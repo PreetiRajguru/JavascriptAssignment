@@ -14,7 +14,7 @@ namespace MatterAssignment.Services.Services
             _context = context;
         }
 
-        public IEnumerable<AttorneyRoleDTO> GetAllAttorneyRoles()
+        public IEnumerable<AttorneyRoleDTO> GetAll()
         {
             List<AttorneyRoleDTO> attorneyRoles = _context.AttorneyRole
                 .Select(ar => new AttorneyRoleDTO
@@ -28,7 +28,7 @@ namespace MatterAssignment.Services.Services
             return attorneyRoles;
         }
 
-        public AttorneyRoleDTO GetAttorneyRoleById(int id)
+        public AttorneyRoleDTO GetById(int id)
         {
             AttorneyRoleDTO? attorneyRole = _context.AttorneyRole
                 .Where(ar => ar.Id == id)
@@ -43,7 +43,7 @@ namespace MatterAssignment.Services.Services
             return attorneyRole;
         }
 
-        public void CreateAttorneyRole(AttorneyRoleDTO attorneyRole)
+        public void Create(AttorneyRoleDTO attorneyRole)
         {
             AttorneyRole newAttorneyRole = new AttorneyRole
             {
@@ -55,7 +55,7 @@ namespace MatterAssignment.Services.Services
             _context.SaveChanges();
         }
 
-        public void DeleteAttorneyRole(int id)
+        public void Delete(int id)
         {
             AttorneyRole attorneyRole = _context.AttorneyRole.Find(id);
 

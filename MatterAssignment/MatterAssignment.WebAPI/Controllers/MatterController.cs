@@ -19,14 +19,14 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllMatters()
         {
-            var matters = _matterService.GetAllMatters();
+            var matters = _matterService.GetAll();
             return Ok(matters);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMatterById(int id)
         {
-            var matter = _matterService.GetMatterById(id);
+            var matter = _matterService.GetById(id);
             if (matter == null)
             {
                 return NotFound();
@@ -43,18 +43,18 @@ namespace MatterAssignment.WebAPI.Controllers
                 return BadRequest();
             }
 
-            var createdMatter = _matterService.CreateMatter(matterDto);
+            var createdMatter = _matterService.Create(matterDto);
             return CreatedAtAction(nameof(GetMatterById), new { id = createdMatter.Id }, createdMatter);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteMatter(int id)
         {
-            _matterService.DeleteMatter(id);
+            _matterService.Delete(id);
             return NoContent();
         }
 
-        [HttpGet("for-client/{clientId}")]
+        [HttpGet("client/{clientId}")]
         public IActionResult GetMattersByClientId(int clientId)
         {
             var matters = _matterService.GetMattersByClientId(clientId);
@@ -68,7 +68,7 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
-        [HttpGet("by-client")]
+        [HttpGet("client")]
         public IActionResult GetMattersGroupedByClient()
         {
             var groupedMatters = _matterService.GetMattersGroupedByClientId();

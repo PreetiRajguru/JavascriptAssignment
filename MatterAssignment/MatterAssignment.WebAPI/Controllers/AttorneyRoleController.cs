@@ -18,17 +18,17 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllAttorneyRoles()
+        public IActionResult GetAll()
         {
-            var attorneyRoles = _attorneyRoleService.GetAllAttorneyRoles();
+            var attorneyRoles = _attorneyRoleService.GetAll();
 
             return Ok(attorneyRoles);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetAttorneyRoleById(int id)
+        public IActionResult GetById(int id)
         {
-            var attorneyRole = _attorneyRoleService.GetAttorneyRoleById(id);
+            var attorneyRole = _attorneyRoleService.GetById(id);
 
             if (attorneyRole == null)
             {
@@ -39,22 +39,22 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAttorneyRole([FromBody] AttorneyRoleDTO attorneyRole)
+        public IActionResult Create([FromBody] AttorneyRoleDTO attorneyRole)
         {
             if (attorneyRole == null)
             {
                 return BadRequest();
             }
 
-            _attorneyRoleService.CreateAttorneyRole(attorneyRole);
+            _attorneyRoleService.Create(attorneyRole);
 
-            return CreatedAtRoute(nameof(GetAttorneyRoleById), new { id = attorneyRole.Id }, attorneyRole);
+            return CreatedAtRoute(nameof(GetById), new { id = attorneyRole.Id }, attorneyRole);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteAttorneyRole(int id)
+        public IActionResult Delete(int id)
         {
-            _attorneyRoleService.DeleteAttorneyRole(id);
+            _attorneyRoleService.Delete(id);
 
             return NoContent();
         }

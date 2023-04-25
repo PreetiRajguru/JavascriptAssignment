@@ -18,7 +18,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllJurisdictionMasters()
         {
-            var jurisdictions = _jurisdictionMasterService.GetAllJurisdictionMasters();
+            var jurisdictions = _jurisdictionMasterService.GetAll();
 
             return Ok(jurisdictions);
         }
@@ -26,7 +26,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetJurisdictionMasterById(int id)
         {
-            var jurisdiction = _jurisdictionMasterService.GetJurisdictionMasterById(id);
+            var jurisdiction = _jurisdictionMasterService.GetById(id);
 
             if (jurisdiction == null)
             {
@@ -44,7 +44,7 @@ namespace MatterAssignment.WebAPI.Controllers
                 return BadRequest();
             }
 
-            _jurisdictionMasterService.CreateJurisdictionMaster(jurisdictionMaster);
+            _jurisdictionMasterService.Create(jurisdictionMaster);
 
             return CreatedAtRoute(nameof(GetJurisdictionMasterById), new { id = jurisdictionMaster.Id }, jurisdictionMaster);
         }
@@ -52,7 +52,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteJurisdictionMaster(int id)
         {
-            _jurisdictionMasterService.DeleteJurisdictionMaster(id);
+            _jurisdictionMasterService.Delete(id);
 
             return NoContent();
         }
