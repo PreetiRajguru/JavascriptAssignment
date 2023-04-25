@@ -16,7 +16,7 @@ namespace MatterAssignment.Services.Services
 
         public IEnumerable<AttorneyDTO> GetAll()
         {
-            List<AttorneyDTO> attorneys = _context.Attorneys
+            IEnumerable<AttorneyDTO> attorneys = _context.Attorneys
                 .Select(a => new AttorneyDTO
                 {
                     Id = a.Id,

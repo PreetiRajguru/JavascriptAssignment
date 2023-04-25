@@ -16,7 +16,7 @@ namespace MatterAssignment.Services.Services
 
         public IEnumerable<AttorneyRoleDTO> GetAll()
         {
-            List<AttorneyRoleDTO> attorneyRoles = _context.AttorneyRole
+            IEnumerable<AttorneyRoleDTO> attorneyRoles = _context.AttorneyRole
                 .Select(ar => new AttorneyRoleDTO
                 {
                     Id = ar.Id,
@@ -30,7 +30,7 @@ namespace MatterAssignment.Services.Services
 
         public AttorneyRoleDTO GetById(int id)
         {
-            AttorneyRoleDTO? attorneyRole = _context.AttorneyRole
+            AttorneyRoleDTO attorneyRole = _context.AttorneyRole
                 .Where(ar => ar.Id == id)
                 .Select(ar => new AttorneyRoleDTO
                 {

@@ -80,7 +80,7 @@ namespace MatterAssignment.Services.Services
 
         public IEnumerable<MatterDTO> GetMattersByClientId(int clientId)
         {
-            List<MatterDTO> matters = _context.Matters
+            IEnumerable<MatterDTO> matters = _context.Matters
                 .Where(m => m.ClientId == clientId)
                 .Select(m => new MatterDTO
                 {
