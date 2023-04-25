@@ -4,11 +4,9 @@ namespace MatterAssignment.Services.Interfaces
 {
     public interface IClient
     {
-        Task<List<ClientDTO>> GetAllClients();
-
+        IEnumerable<ClientDTO> GetAll();
         ClientDTO GetById(int id);
-
-        ClientDTO Create(ClientDTO clientDto);
-
+        ClientDTO Create(ClientDTO client);
+        bool Delete(int id);
     }
 }

@@ -2,24 +2,22 @@
 using MatterAssignment.Data.Models;
 using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace MatterAssignment.Services.Services
 {
 
     public class ClientService : IClient
     {
-        private MatterAssignmentDbContext _context;
-        public ClientService(MatterAssignmentDbContext newContext)
+        private readonly MatterAssignmentDbContext _dbContext;
+
+        public ClientService(MatterAssignmentDbContext dbContext)
         {
-            _context = newContext;
+            _dbContext = dbContext;
         }
 
-        public async Task<List<ClientDTO>> GetAllClients()
-        {           
-            var clients = await _context.Clients.AsNoTracking().ToListAsync();
-
-            return clients.Select(c => new ClientDTO
+        public IEnumerable<ClientDTO> GetAll()
+        {
+            return _dbContext.Clients.Select(c => new ClientDTO
             {
                 Id = c.Id,
                 FirstName = c.FirstName,
@@ -27,48 +25,54 @@ namespace MatterAssignment.Services.Services
                 PhoneNumber = c.PhoneNumber,
                 Email = c.Email,
                 Address = c.Address
-            }).ToList();
-
+            });
         }
 
 
         public ClientDTO GetById(int id)
         {
-            var client = _context.Clients.FirstOrDefault(c => c.Id == id);
+            var client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
+            if (client != null)
+            {
+                return new ClientDTO
+                {
+                    Id = client.Id,
+                    FirstName = client.FirstName,
+                    LastName = client.LastName,
+                    PhoneNumber = client.PhoneNumber,
+                    Email = client.Email,
+                    Address = client.Address
+                };
+            }
+            return null;
+        }
 
-            return client != null ? new ClientDTO
+        public ClientDTO Create(ClientDTO client)
+        {
+            var newClient = new Client
             {
                 FirstName = client.FirstName,
                 LastName = client.LastName,
                 PhoneNumber = client.PhoneNumber,
                 Email = client.Email,
                 Address = client.Address
-            } : null;
+            };
+            _dbContext.Clients.Add(newClient);
+            _dbContext.SaveChanges();
+            client.Id = newClient.Id;
+            return client;
         }
 
-
-        public ClientDTO Create(ClientDTO clientDto)
+        public bool Delete(int id)
         {
-            if (clientDto == null)
+            var client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
+            if (client != null)
             {
-                throw new ArgumentNullException(nameof(clientDto));
+                _dbContext.Clients.Remove(client);
+                _dbContext.SaveChanges();
+                return true;
             }
-
-            var client = new Client
-            {
-                FirstName = clientDto.FirstName,
-                LastName = clientDto.LastName,
-                PhoneNumber = clientDto.PhoneNumber,
-                Email = clientDto.Email,
-                Address = clientDto.Address
-            };
-
-            _context.Clients.Add(client);
-            _context.SaveChanges();
-
-            clientDto.Id = client.Id;
-
-            return clientDto;
+            return false;
         }
     }
 }

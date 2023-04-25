@@ -15,6 +15,6 @@ namespace MatterAssignment.Data.Models
 
         public Attorney Attorney { get; set; }
         public RoleMaster RoleMaster { get; set; }
-
+        public string RoleName { get; set; }
     }
 }

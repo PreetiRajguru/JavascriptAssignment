@@ -11,6 +11,7 @@ namespace MatterAssignment.Services.DTO
         public int Id { get; set; }
 
         public int AttorneyId { get; set; }
+
         public int RoleMasterId { get; set; }
     }
 }

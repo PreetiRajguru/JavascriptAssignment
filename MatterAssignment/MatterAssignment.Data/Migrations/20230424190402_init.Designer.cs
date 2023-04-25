@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MatterAssignment.Data.Migrations
 {
     [DbContext(typeof(MatterAssignmentDbContext))]
-    [Migration("20230424124747_init")]
+    [Migration("20230424190402_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,10 @@ namespace MatterAssignment.Data.Migrations
 
                     b.Property<int>("RoleMasterId")
                         .HasColumnType("int");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

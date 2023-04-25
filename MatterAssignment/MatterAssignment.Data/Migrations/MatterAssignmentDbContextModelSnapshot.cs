@@ -56,6 +56,10 @@ namespace MatterAssignment.Data.Migrations
                     b.Property<int>("RoleMasterId")
                         .HasColumnType("int");
 
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AttorneyId");

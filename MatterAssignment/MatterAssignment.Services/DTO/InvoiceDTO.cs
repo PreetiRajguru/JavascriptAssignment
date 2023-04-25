@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MatterAssignment.Services.DTO
+﻿namespace MatterAssignment.Services.DTO
 {
     public class InvoiceDTO
     {
@@ -17,3 +11,19 @@ namespace MatterAssignment.Services.DTO
         public int MatterId { get; set; }
     }
 }
+
+
+
+/*
+public class InvoiceDTO
+{
+    public int Id { get; set; }
+
+    public decimal HoursWorked { get; set; }
+
+    public int AttorneyId { get; set; }
+
+    public int MatterId { get; set; }
+}
+for this dto create a interface service method  and controller method for get invoices by matter (use group by in linq and group 
+invoices according to matter)*/

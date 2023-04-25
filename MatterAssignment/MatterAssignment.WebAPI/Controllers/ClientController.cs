@@ -1,5 +1,6 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
+using MatterAssignment.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,48 +11,48 @@ namespace MatterAssignment.WebAPI.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        public readonly IClient _clientService;
+        private readonly IClient _clientService;
 
         public ClientController(IClient clientService)
         {
             _clientService = clientService;
         }
 
-        //get all customers
+
+
         [HttpGet]
-        public async Task<ActionResult<List<ClientDTO>>> GetAllClients()
+        public IActionResult GetAll()
         {
-            var clients = await _clientService.GetAllClients();
+            var clients = _clientService.GetAll();
             return Ok(clients);
         }
 
-
         [HttpGet("{id}")]
-        public ActionResult<ClientDTO> GetById(int id)
+        public IActionResult GetById(int id)
         {
             var client = _clientService.GetById(id);
-
-            if (client == null)
+            if (client != null)
             {
-                return NotFound();
+                return Ok(client);
             }
-
-            return Ok(client);
+            return NotFound();
         }
 
-
         [HttpPost]
-        public ActionResult<ClientDTO> Create([FromBody] ClientDTO clientDto)
+        public IActionResult Create(ClientDTO client)
         {
-            if (clientDto == null)
+            var newClient = _clientService.Create(client);
+            return CreatedAtAction(nameof(GetById), new { id = newClient.Id }, newClient);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (_clientService.Delete(id))
             {
-                return BadRequest("Client data is null.");
+                return NoContent();
             }
-
-            var createdClient = _clientService.Create(clientDto);
-
-            // return 201 Created response with location header
-            return CreatedAtAction(nameof(GetById), new { id = createdClient.Id }, createdClient);
+            return NotFound();
         }
 
     }

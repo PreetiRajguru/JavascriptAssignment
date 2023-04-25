@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace MatterAssignment.Services.Interfaces
 {
-    public interface IAttorney
+    public interface IRoleMaster
     {
-        IEnumerable<AttorneyDTO> GetAllAttorneys();
-        AttorneyDTO GetAttorneyById(int id);
-        void CreateAttorney(AttorneyDTO attorney);
-        void DeleteAttorney(int id);
+        IEnumerable<RoleMasterDTO> GetAll();
+        RoleMasterDTO GetById(int id);
+        RoleMasterDTO Create(RoleMasterDTO role);
+        bool Delete(int id);
     }
-
 }
