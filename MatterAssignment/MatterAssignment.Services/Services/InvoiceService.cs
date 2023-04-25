@@ -68,8 +68,6 @@ namespace MatterAssignment.Services.Services
             _dbContext.SaveChanges();
         }
 
-
-
         public InvoiceDTO GetInvoiceByMatterId(int matterId)
         {
             using (MatterAssignmentDbContext dbContext = new MatterAssignmentDbContext())
