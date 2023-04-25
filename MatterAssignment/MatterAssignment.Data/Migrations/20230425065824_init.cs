@@ -14,10 +14,10 @@ namespace MatterAssignment.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,8 @@ namespace MatterAssignment.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    JurisdictionName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    JurisdictionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,7 +44,8 @@ namespace MatterAssignment.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +60,8 @@ namespace MatterAssignment.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    JurisdictionId = table.Column<int>(type: "int", nullable: false)
+                    JurisdictionId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,7 +82,7 @@ namespace MatterAssignment.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AttorneyId = table.Column<int>(type: "int", nullable: false),
                     RoleMasterId = table.Column<int>(type: "int", nullable: false),
-                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,7 +112,8 @@ namespace MatterAssignment.Data.Migrations
                     ClientId = table.Column<int>(type: "int", nullable: false),
                     BillingAttorneyId = table.Column<int>(type: "int", nullable: false),
                     ResponsibleAttorneyId = table.Column<int>(type: "int", nullable: false),
-                    JurisdictionId = table.Column<int>(type: "int", nullable: false)
+                    JurisdictionId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,7 +146,8 @@ namespace MatterAssignment.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HoursWorked = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AttorneyId = table.Column<int>(type: "int", nullable: false),
-                    MatterId = table.Column<int>(type: "int", nullable: false)
+                    MatterId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

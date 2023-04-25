@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MatterAssignment.Data.Models
+﻿namespace MatterAssignment.Data.Models
 {
     public class RoleMaster
     {
@@ -12,5 +6,6 @@ namespace MatterAssignment.Data.Models
         public string RoleName { get; set; }
 
         public ICollection<AttorneyRole> AttorneyRoles { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

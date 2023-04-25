@@ -17,5 +17,7 @@
         public ICollection<AttorneyRole> AttorneyRoles { get; set; }
 
         public ICollection<Invoice> Invoices { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

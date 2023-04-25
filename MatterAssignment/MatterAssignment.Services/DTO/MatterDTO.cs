@@ -1,7 +1,10 @@
-﻿namespace MatterAssignment.Services.DTO
+﻿using Newtonsoft.Json;
+
+namespace MatterAssignment.Services.DTO
 {
     public class MatterDTO
     {
+        [JsonIgnore]
         public int Id { get; set; }
 
         public string Title { get; set; }

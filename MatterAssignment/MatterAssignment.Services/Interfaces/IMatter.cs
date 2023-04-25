@@ -9,7 +9,9 @@ namespace MatterAssignment.Services.Interfaces
         MatterDTO CreateMatter(MatterDTO matter);
         void DeleteMatter(int id);
         IEnumerable<MatterDTO> GetMattersByClientId(int clientId);
-        List<MatterDTO> GetMattersByClient();
+
+
+
     }
 
 

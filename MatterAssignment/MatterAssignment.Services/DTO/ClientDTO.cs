@@ -11,7 +11,7 @@ namespace MatterAssignment.Services.DTO
 
         public string LastName { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         public string Email { get; set; }
 

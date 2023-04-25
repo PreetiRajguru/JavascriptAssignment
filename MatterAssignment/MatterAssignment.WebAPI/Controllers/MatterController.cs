@@ -1,4 +1,5 @@
-﻿using MatterAssignment.Services.DTO;
+﻿using MatterAssignment.Data.Models;
+using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,13 +68,8 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
-        [HttpGet("matters-by-client")]
-        public IActionResult GetMattersByClient()
-        {
-            var mattersByClient = _matterService.GetMattersByClient();
+        
 
-            return Ok(mattersByClient);
-        }
     }
 
 }

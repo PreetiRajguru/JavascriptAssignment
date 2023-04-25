@@ -23,5 +23,6 @@
         public JurisdictionMaster Jurisdiction { get; set; } = null!;
 
         public ICollection<Invoice> Invoices { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace MatterAssignment.Data.Models
 
         public string LastName { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         public string Email { get; set; }
 
@@ -23,7 +23,7 @@ namespace MatterAssignment.Data.Models
 
         public ICollection<Matter> Matters { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

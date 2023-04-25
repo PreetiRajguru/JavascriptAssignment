@@ -96,28 +96,8 @@ namespace MatterAssignment.Services.Services
 
             return matters;
         }
-        public List<MatterDTO> GetMattersByClient()
-        {
-            var mattersByClient = _context.Matters
-                .Include(m => m.Client)
-                .Include(m => m.BillingAttorneyId)
-                .Include(m => m.ResponsibleAttorneyId)
-                .Include(m => m.Jurisdiction)
-                .GroupBy(m => m.ClientId)
-                .Select(g => new MatterDTO
-                {
-                    ClientId = g.Key,
-                    Title = "",
-                    Description = "",
-                    Id = 0,
-                    BillingAttorneyId = 0,
-                    ResponsibleAttorneyId = 0,
-                    JurisdictionId = 0
-                })
-                .ToList();
 
-            return mattersByClient;
-        }
+       
     }
 
 }

@@ -13,5 +13,6 @@
         public int MatterId { get; set; }
 
         public Matter Matter { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
