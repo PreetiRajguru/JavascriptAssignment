@@ -12,5 +12,11 @@ namespace MatterAssignment.Services.Interfaces
         Dictionary<int, List<InvoiceDTO>> GetInvoicesForMatters();
 
         double GetBillingByAttorney(int attorneyId);
+
+
+
+        /*  Dictionary<int, double> GetAllBillingByAttorney();*/
+
+        /*  decimal GetTotalBillingByAttorneyLastWeek(int attorneyId);*/
     }
 }

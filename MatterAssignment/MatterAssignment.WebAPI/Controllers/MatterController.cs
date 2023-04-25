@@ -54,7 +54,7 @@ namespace MatterAssignment.WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpGet("byclient/{clientId}")]
+        [HttpGet("for-client/{clientId}")]
         public IActionResult GetMattersByClientId(int clientId)
         {
             var matters = _matterService.GetMattersByClientId(clientId);
@@ -68,7 +68,7 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
 
-        [HttpGet("grouped-by-client")]
+        [HttpGet("by-client")]
         public IActionResult GetMattersGroupedByClient()
         {
             var groupedMatters = _matterService.GetMattersGroupedByClientId();

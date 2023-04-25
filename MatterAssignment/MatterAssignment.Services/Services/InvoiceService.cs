@@ -125,5 +125,35 @@ namespace MatterAssignment.Services.Services
             return Convert.ToDouble(billing);
         }
 
+
+
+
+       /* public Dictionary<int, double> GetAllBillingByAttorney()
+        {
+            DateTime today = DateTime.Today;
+            DateTime previousWeekStart = today.AddDays(-(int)today.DayOfWeek - 6);
+            DateTime previousWeekEnd = previousWeekStart.AddDays(6);
+
+            var billingByAttorney = _dbContext.Invoices
+                .Where(i => i.InvoiceDate >= previousWeekStart && i.InvoiceDate <= previousWeekEnd)
+                .GroupBy(i => i.AttorneyId)
+                .Select(g => new { AttorneyId = g.Key, TotalBilling = g.Sum(im => im.TotalAmount) })
+                .ToDictionary(x => x.AttorneyId, x => Convert.ToDouble(x.TotalBilling));
+
+            return billingByAttorney;
+        }*/
+
+
+        /*  public decimal GetTotalBillingByAttorneyLastWeek(int attorneyId)
+          {
+              DateTime lastWeekStart = DateTime.Today.AddDays(-7);
+              DateTime lastWeekEnd = DateTime.Today;
+
+              decimal totalBilling = _dbContext.Invoices
+                  .Where(i => i.AttorneyId == attorneyId && i.InvoiceDate >= lastWeekStart && i.InvoiceDate <= lastWeekEnd)
+                  .Sum(i => i.TotalAmount);
+
+              return totalBilling;
+          }*/
     }
 }
