@@ -8,6 +8,8 @@
 
         public decimal Rate { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public int JurisdictionId { get; set; }
 
         public JurisdictionMaster Jurisdiction { get; set; } = null!;
@@ -18,6 +20,5 @@
 
         public ICollection<Invoice> Invoices { get; set; }
 
-        public bool IsDeleted { get; set; }
     }
 }

@@ -6,10 +6,11 @@
 
         public string JurisdictionName { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public Attorney Attorney { get; set; } = null!;
 
         public Matter Matter { get; set; }
 
-        public bool IsDeleted { get; set; }
     }
 }

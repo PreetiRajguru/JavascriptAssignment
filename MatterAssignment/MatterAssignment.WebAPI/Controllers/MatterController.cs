@@ -69,9 +69,9 @@ namespace MatterAssignment.WebAPI.Controllers
 
 
         [HttpGet("client")]
-        public IActionResult GetMattersGroupedByClient()
+        public IActionResult GetMattersForClient()
         {
-            Dictionary<int, List<MatterDTO>> groupedMatters = _matterService.GetMattersGroupedByClientId();
+            Dictionary<int, List<MatterDTO>> groupedMatters = _matterService.GetMattersForClient();
 
             return Ok(groupedMatters);
         }

@@ -97,7 +97,7 @@ namespace MatterAssignment.Services.Services
             return matters;
         }
 
-        public Dictionary<int, List<MatterDTO>> GetMattersGroupedByClientId()
+        public Dictionary<int, List<MatterDTO>> GetMattersForClient()
         {
             List<Matter> matters = _context.Matters.ToList();
 

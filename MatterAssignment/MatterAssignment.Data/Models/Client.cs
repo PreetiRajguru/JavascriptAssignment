@@ -21,9 +21,8 @@ namespace MatterAssignment.Data.Models
 
         public string Address { get; set; }
 
-        public ICollection<Matter> Matters { get; set; }
-
         public bool IsDeleted { get; set; }
 
+        public ICollection<Matter> Matters { get; set; }
     }
 }

@@ -10,14 +10,14 @@
 
         public DateTime InvoiceDate { get; set; }
 
-        public int AttorneyId { get; set; }
+        public bool IsDeleted { get; set; }
 
-        public Attorney Attorney { get; set; }
+        public int AttorneyId { get; set; }
 
         public int MatterId { get; set; }
 
-        public Matter Matter { get; set; }
+        public Attorney Attorney { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public Matter Matter { get; set; }
     }
 }
