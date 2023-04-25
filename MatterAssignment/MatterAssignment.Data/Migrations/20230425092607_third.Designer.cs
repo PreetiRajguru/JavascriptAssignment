@@ -4,14 +4,16 @@ using MatterAssignment.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MatterAssignment.Data.Migrations
 {
     [DbContext(typeof(MatterAssignmentDbContext))]
-    partial class MatterAssignmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230425092607_third")]
+    partial class third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -22,6 +22,8 @@ namespace MatterAssignment.Services.Services
             {
                 Id = i.Id,
                 HoursWorked = i.HoursWorked,
+                TotalAmount = i.TotalAmount,
+                InvoiceDate = i.InvoiceDate,
                 AttorneyId = i.AttorneyId,
                 MatterId = i.MatterId
             });
@@ -35,6 +37,8 @@ namespace MatterAssignment.Services.Services
             {
                 Id = invoice.Id,
                 HoursWorked = invoice.HoursWorked,
+                TotalAmount = invoice.TotalAmount,
+                InvoiceDate = invoice.InvoiceDate,
                 AttorneyId = invoice.AttorneyId,
                 MatterId = invoice.MatterId
             };
@@ -42,9 +46,12 @@ namespace MatterAssignment.Services.Services
 
         public void CreateInvoice(InvoiceDTO invoice)
         {
+            decimal attorneyRate = _dbContext.Attorneys.Where(a => a.Id ==  invoice.AttorneyId).Select (  a => a.Rate).First();
             Invoice newInvoice = new Invoice
             {
                 HoursWorked = invoice.HoursWorked,
+                TotalAmount = invoice.HoursWorked * attorneyRate,
+                InvoiceDate = invoice.InvoiceDate,
                 AttorneyId = invoice.AttorneyId,
                 MatterId = invoice.MatterId
             };
@@ -81,6 +88,8 @@ namespace MatterAssignment.Services.Services
                 {
                     Id = invoice.Id,
                     HoursWorked = invoice.HoursWorked,
+                    TotalAmount = invoice.TotalAmount,
+                    InvoiceDate = invoice.InvoiceDate,
                     AttorneyId = invoice.Attorney.Id,
                     MatterId = invoice.MatterId
                 };
@@ -97,6 +106,8 @@ namespace MatterAssignment.Services.Services
                                           .ToDictionary(g => g.Key,
                                                         g => g.Select(i => new InvoiceDTO
                                                         {
+                                                            TotalAmount = i.TotalAmount,
+                                                            InvoiceDate = i.InvoiceDate,
                                                             HoursWorked = i.HoursWorked,
                                                             AttorneyId = i.AttorneyId
                                                         }).ToList());
