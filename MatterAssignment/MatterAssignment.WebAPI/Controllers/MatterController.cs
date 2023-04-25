@@ -2,6 +2,7 @@
 using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace MatterAssignment.WebAPI.Controllers
 {
@@ -55,9 +56,9 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
         [HttpGet("client/{clientId}")]
-        public IActionResult GetMattersByClientId(int clientId)
+        public IActionResult GetMattersForClient(int clientId)
         {
-            IEnumerable<MatterDTO> matters = _matterService.GetMattersByClientId(clientId);
+            IEnumerable<MatterDTO> matters = _matterService.GetMattersForClient(clientId);
 
             if (matters == null)
             {
@@ -69,9 +70,9 @@ namespace MatterAssignment.WebAPI.Controllers
 
 
         [HttpGet("client")]
-        public IActionResult GetMattersForClient()
+        public IActionResult GetMattersByClients()
         {
-            Dictionary<int, List<MatterDTO>> groupedMatters = _matterService.GetMattersForClient();
+            IEnumerable < ClientMatterDTO > groupedMatters = _matterService.GetMattersByClients();
 
             return Ok(groupedMatters);
         }

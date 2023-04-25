@@ -12,9 +12,9 @@ namespace MatterAssignment.Services.Interfaces
 
         void Delete(int id);
 
-        InvoiceDTO GetInvoiceByMatter(int matterId);
+        InvoiceDTO GetInvoiceForMatter(int matterId);
 
-        Dictionary<int, List<InvoiceDTO>> GetInvoicesForMatters();
+        Dictionary<int, List<InvoiceDTO>> GetInvoicesByMatters();
 
         double GetBillingByAttorney(int attorneyId);
     }

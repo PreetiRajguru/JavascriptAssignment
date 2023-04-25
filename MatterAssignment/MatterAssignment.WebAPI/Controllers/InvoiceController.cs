@@ -45,9 +45,9 @@ namespace MatterAssignment.WebAPI.Controllers
 
 
         [HttpGet("matter/{matterId}")]
-        public ActionResult<InvoiceDTO> GetInvoiceByMatter(int matterId)
+        public ActionResult<InvoiceDTO> GetInvoiceForMatter(int matterId)
         {
-            InvoiceDTO invoiceDto = _invoiceService.GetInvoiceByMatter(matterId);
+            InvoiceDTO invoiceDto = _invoiceService.GetInvoiceForMatter(matterId);
 
             if (invoiceDto == null)
             {
@@ -59,9 +59,9 @@ namespace MatterAssignment.WebAPI.Controllers
 
 
         [HttpGet("matter")]
-        public IActionResult GetInvoicesForMatters()
+        public IActionResult GetInvoicesByMatters()
         {
-            Dictionary<int, List<InvoiceDTO>> groupedInvoices = _invoiceService.GetInvoicesForMatters();
+            Dictionary<int, List<InvoiceDTO>> groupedInvoices = _invoiceService.GetInvoicesByMatters();
 
             return Ok(groupedInvoices);
         }
@@ -79,35 +79,6 @@ namespace MatterAssignment.WebAPI.Controllers
 
             return Ok(new { AttorneyId = attorneyId, Billing = totalBilling });
         }
-
-
-
-
-
-     /*   [HttpGet]
-        public ActionResult<Dictionary<int, double>> GetAllBillingByAttorney()
-        {
-            var billingByAttorney = _invoiceService.GetAllBillingByAttorney();
-
-            if (billingByAttorney == null || billingByAttorney.Count == 0)
-            {
-                return NotFound();
-            }
-
-            return Ok(billingByAttorney);
-        }*/
-
-
-        /*   [HttpGet("last-week-by-attorney/{attorneyId}")]
-           public IActionResult GetTotalBillingByAttorneyLastWeek(int attorneyId)
-           {
-               decimal totalBilling = _invoiceService.GetTotalBillingByAttorneyLastWeek(attorneyId);
-               if (totalBilling == 0)
-               {
-                   return NotFound();
-               }
-               return Ok(totalBilling);
-           }*/
     }
 }
 

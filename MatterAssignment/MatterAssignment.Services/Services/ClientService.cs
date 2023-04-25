@@ -62,6 +62,29 @@ namespace MatterAssignment.Services.Services
             client.Id = newClient.Id;
             return client;
         }
+        /*
+                public ClientDTO Create(ClientDTO client)
+                {
+                    bool emailExists = _dbContext.Clients.Any(c => c.Email == client.Email);
+                    if (emailExists)
+                    {
+                        throw new Exception("Client with this email already exists.");
+                    }
+
+                    Client newClient = new Client
+                    {
+                        FirstName = client.FirstName,
+                        LastName = client.LastName,
+                        PhoneNumber = client.PhoneNumber,
+                        Email = client.Email,
+                        Address = client.Address
+                    };
+                    _dbContext.Clients.Add(newClient);
+                    _dbContext.SaveChanges();
+                    client.Id = newClient.Id;
+                    return client;
+                }*/
+
 
         public bool Delete(int id)
         {

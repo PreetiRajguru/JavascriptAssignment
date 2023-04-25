@@ -68,7 +68,7 @@ namespace MatterAssignment.Services.Services
             _dbContext.SaveChanges();
         }
 
-        public InvoiceDTO GetInvoiceByMatter(int matterId)
+        public InvoiceDTO GetInvoiceForMatter(int matterId)
         {
             using (MatterAssignmentDbContext dbContext = new MatterAssignmentDbContext())
             {
@@ -96,7 +96,7 @@ namespace MatterAssignment.Services.Services
             }
         }
 
-        public Dictionary<int, List<InvoiceDTO>> GetInvoicesForMatters()
+        public Dictionary<int, List<InvoiceDTO>> GetInvoicesByMatters()
         {
             List<Invoice> invoices = _dbContext.Invoices.ToList();
 

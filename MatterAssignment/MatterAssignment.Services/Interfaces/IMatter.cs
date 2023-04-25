@@ -8,8 +8,14 @@ namespace MatterAssignment.Services.Interfaces
         MatterDTO GetById(int id);
         MatterDTO Create(MatterDTO matter);
         void Delete(int id);
-        IEnumerable<MatterDTO> GetMattersByClientId(int clientId);
+        IEnumerable<MatterDTO> GetMattersForClient(int clientId);
 
-        Dictionary<int, List<MatterDTO>> GetMattersForClient();
+        /*  Dictionary<int, List<MatterDTO>> GetMattersForClient();*/
+
+
+        IEnumerable<ClientMatterDTO> GetMattersByClients();
+
+
+
     }
 }

@@ -78,7 +78,7 @@ namespace MatterAssignment.Services.Services
             }
         }
 
-        public IEnumerable<MatterDTO> GetMattersByClientId(int clientId)
+        public IEnumerable<MatterDTO> GetMattersForClient(int clientId)
         {
             IEnumerable<MatterDTO> matters = _context.Matters
                 .Where(m => m.ClientId == clientId)
@@ -97,22 +97,46 @@ namespace MatterAssignment.Services.Services
             return matters;
         }
 
-        public Dictionary<int, List<MatterDTO>> GetMattersForClient()
+        /*        public Dictionary<int, List<MatterDTO>> GetMattersForClient()
+                {
+                    List<Matter> matters = _context.Matters.ToList();
+
+                    Dictionary<int, List<MatterDTO>> groupedMatters = matters.GroupBy(m => m.ClientId)
+                                                .ToDictionary(g => g.Key,
+                                                              g => g.Select(m => new MatterDTO
+                                                              {
+                                                                  Title = m.Title,
+                                                                  Description = m.Description,
+                                                                  BillingAttorneyId = m.BillingAttorneyId,
+                                                                  ResponsibleAttorneyId = m.ResponsibleAttorneyId,
+                                                                  JurisdictionId = m.JurisdictionId
+                                                              }).ToList());
+
+                    return groupedMatters;
+                }*/
+
+
+
+        public IEnumerable<ClientMatterDTO> GetMattersByClients()
         {
             List<Matter> matters = _context.Matters.ToList();
 
-            Dictionary<int, List<MatterDTO>> groupedMatters = matters.GroupBy(m => m.ClientId)
-                                        .ToDictionary(g => g.Key,
-                                                      g => g.Select(m => new MatterDTO
-                                                      {
-                                                          Title = m.Title,
-                                                          Description = m.Description,
-                                                          BillingAttorneyId = m.BillingAttorneyId,
-                                                          ResponsibleAttorneyId = m.ResponsibleAttorneyId,
-                                                          JurisdictionId = m.JurisdictionId
-                                                      }).ToList());
+            var groupedMatters = matters.GroupBy(m => m.ClientId)
+                                        .Select(g => new ClientMatterDTO
+                                        {
+                                            ClientId = g.Key,
+                                            Matters = g.Select(m => new MatterDTO
+                                            {
+                                                Title = m.Title,
+                                                Description = m.Description,
+                                                BillingAttorneyId = m.BillingAttorneyId,
+                                                ResponsibleAttorneyId = m.ResponsibleAttorneyId,
+                                                JurisdictionId = m.JurisdictionId
+                                            }).ToList()
+                                        });
 
             return groupedMatters;
         }
+
     }
 }
