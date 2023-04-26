@@ -61,7 +61,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("matter")]
         public IActionResult GetInvoicesByMatters()
         {
-            Dictionary<int, List<InvoiceDTO>> groupedInvoices = _invoiceService.GetInvoicesByMatters();
+            IEnumerable<MatterInvoiceDTO> groupedInvoices = _invoiceService.GetInvoicesByMatters();
 
             return Ok(groupedInvoices);
         }

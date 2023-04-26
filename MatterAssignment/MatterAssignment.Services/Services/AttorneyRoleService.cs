@@ -30,7 +30,7 @@ namespace MatterAssignment.Services.Services
 
         public AttorneyRoleDTO GetById(int id)
         {
-            AttorneyRoleDTO attorneyRole = _context.AttorneyRole
+            AttorneyRoleDTO? attorneyRole = _context.AttorneyRole
                 .Where(ar => ar.Id == id)
                 .Select(ar => new AttorneyRoleDTO
                 {

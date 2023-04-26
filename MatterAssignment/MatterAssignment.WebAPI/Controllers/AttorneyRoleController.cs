@@ -1,6 +1,5 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
-using MatterAssignment.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatterAssignment.WebAPI.Controllers

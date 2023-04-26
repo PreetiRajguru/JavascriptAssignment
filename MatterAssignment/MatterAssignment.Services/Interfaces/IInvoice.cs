@@ -14,7 +14,7 @@ namespace MatterAssignment.Services.Interfaces
 
         InvoiceDTO GetInvoiceForMatter(int matterId);
 
-        Dictionary<int, List<InvoiceDTO>> GetInvoicesByMatters();
+       IEnumerable<MatterInvoiceDTO> GetInvoicesByMatters();
 
         double GetBillingByAttorney(int attorneyId);
     }

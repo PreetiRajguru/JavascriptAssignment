@@ -51,7 +51,7 @@ namespace MatterAssignment.Services.Services
 
         public bool Delete(int id)
         {
-            RoleMaster role = _dbContext.RoleMaster.FirstOrDefault(r => r.Id == id);
+            RoleMaster? role = _dbContext.RoleMaster.FirstOrDefault(r => r.Id == id);
             if (role != null)
             {
                 _dbContext.RoleMaster.Remove(role);

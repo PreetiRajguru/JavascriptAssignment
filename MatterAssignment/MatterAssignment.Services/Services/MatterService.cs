@@ -97,31 +97,12 @@ namespace MatterAssignment.Services.Services
             return matters;
         }
 
-        /*        public Dictionary<int, List<MatterDTO>> GetMattersForClient()
-                {
-                    List<Matter> matters = _context.Matters.ToList();
-
-                    Dictionary<int, List<MatterDTO>> groupedMatters = matters.GroupBy(m => m.ClientId)
-                                                .ToDictionary(g => g.Key,
-                                                              g => g.Select(m => new MatterDTO
-                                                              {
-                                                                  Title = m.Title,
-                                                                  Description = m.Description,
-                                                                  BillingAttorneyId = m.BillingAttorneyId,
-                                                                  ResponsibleAttorneyId = m.ResponsibleAttorneyId,
-                                                                  JurisdictionId = m.JurisdictionId
-                                                              }).ToList());
-
-                    return groupedMatters;
-                }*/
-
-
 
         public IEnumerable<ClientMatterDTO> GetMattersByClients()
         {
             List<Matter> matters = _context.Matters.ToList();
 
-            var groupedMatters = matters.GroupBy(m => m.ClientId)
+            IEnumerable<ClientMatterDTO> groupedMatters = matters.GroupBy(m => m.ClientId)
                                         .Select(g => new ClientMatterDTO
                                         {
                                             ClientId = g.Key,

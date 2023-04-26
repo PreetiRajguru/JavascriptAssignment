@@ -72,7 +72,7 @@ namespace MatterAssignment.Services.Services
         {
             using (MatterAssignmentDbContext dbContext = new MatterAssignmentDbContext())
             {
-                Invoice invoice = dbContext.Invoices
+                Invoice? invoice = dbContext.Invoices
                     .Where(i => i.MatterId == matterId)
                     .Include(i => i.Attorney)
                     .FirstOrDefault();
@@ -96,19 +96,22 @@ namespace MatterAssignment.Services.Services
             }
         }
 
-        public Dictionary<int, List<InvoiceDTO>> GetInvoicesByMatters()
+        public IEnumerable<MatterInvoiceDTO> GetInvoicesByMatters()
         {
             List<Invoice> invoices = _dbContext.Invoices.ToList();
 
-            Dictionary<int, List<InvoiceDTO>> groupedInvoices = invoices.GroupBy(i => i.MatterId)
-                                          .ToDictionary(g => g.Key,
-                                                        g => g.Select(i => new InvoiceDTO
-                                                        {
-                                                            TotalAmount = i.TotalAmount,
-                                                            InvoiceDate = i.InvoiceDate,
-                                                            HoursWorked = i.HoursWorked,
-                                                            AttorneyId = i.AttorneyId
-                                                        }).ToList());
+            IEnumerable<MatterInvoiceDTO> groupedInvoices = invoices.GroupBy(i => i.MatterId)
+                                           .Select(g => new MatterInvoiceDTO
+                                           {
+                                               MatterId = g.Key,
+                                               Invoices = g.Select(i => new InvoiceDTO
+                                               {
+                                                   TotalAmount = i.TotalAmount,
+                                                   InvoiceDate = i.InvoiceDate,
+                                                   HoursWorked = i.HoursWorked,
+                                                   AttorneyId = i.AttorneyId
+                                               }).ToList()
+                                           });
             return groupedInvoices;
         }
 

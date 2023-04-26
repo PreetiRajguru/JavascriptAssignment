@@ -1,8 +1,6 @@
-﻿using MatterAssignment.Data.Models;
-using MatterAssignment.Services.DTO;
+﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace MatterAssignment.WebAPI.Controllers
 {
@@ -72,7 +70,7 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("client")]
         public IActionResult GetMattersByClients()
         {
-            IEnumerable < ClientMatterDTO > groupedMatters = _matterService.GetMattersByClients();
+            IEnumerable<ClientMatterDTO> groupedMatters = _matterService.GetMattersByClients();
 
             return Ok(groupedMatters);
         }

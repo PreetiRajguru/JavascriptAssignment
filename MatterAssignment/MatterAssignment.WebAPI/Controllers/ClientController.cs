@@ -1,9 +1,6 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
-using MatterAssignment.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MatterAssignment.WebAPI.Controllers
 {
