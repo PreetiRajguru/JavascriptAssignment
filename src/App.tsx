@@ -21,11 +21,6 @@ function App() {
   return (
     <AppContext.Provider value={{ loading }}>
     <div>
-      {/* <CreateMatter /> */}
-      {/* <GetMatterForClients />  */}
-      {/* <GetInvoiceForMatter />  */}
-      {/* <GetMatterByClientId/> */}
-      {/* <GetBillingByAttorneyId /> */}
       <BrowserRouter>
       <Navigation />
         <Routes>
@@ -43,11 +38,3 @@ function App() {
 }
 
 export default App;
-
-
-
-{/* <Route path="customers">
-            <Route index element={<Customers />} />
-            <Route path="add" element={<AddCustomer />} />
-            <Route path="edit/:id" element={<EditCustomer />} />
-          </Route> */}
