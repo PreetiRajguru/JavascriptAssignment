@@ -1,10 +1,10 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MatterAssignment.WebAPI.Controllers
 {
-    // Controller
     [ApiController]
     [Route("api/[controller]")]
     public class AttorneyRoleController : ControllerBase
@@ -19,44 +19,75 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            IEnumerable<AttorneyRoleDTO> attorneyRoles = _attorneyRoleService.GetAll();
+            try
+            {
+                IEnumerable<AttorneyRoleDTO> attorneyRoles = _attorneyRoleService.GetAll();
 
-            return Ok(attorneyRoles);
+                return Ok(attorneyRoles);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            AttorneyRoleDTO attorneyRole = _attorneyRoleService.GetById(id);
-
-            if (attorneyRole == null)
+            try
             {
-                return NotFound();
-            }
+                AttorneyRoleDTO attorneyRole = _attorneyRoleService.GetById(id);
 
-            return Ok(attorneyRole);
+                if (attorneyRole == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(attorneyRole);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] AttorneyRoleDTO attorneyRole)
         {
-            if (attorneyRole == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
+            try
+            {
+                if (attorneyRole == null)
+                {
+                    return BadRequest();
+                }
 
-            _attorneyRoleService.Create(attorneyRole);
+                _attorneyRoleService.Create(attorneyRole);
 
-            return CreatedAtRoute(nameof(GetById), new { id = attorneyRole.Id }, attorneyRole);
+                return CreatedAtRoute(nameof(GetById), new { id = attorneyRole.Id }, attorneyRole);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _attorneyRoleService.Delete(id);
+            try
+            {
+                _attorneyRoleService.Delete(id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
-
 }

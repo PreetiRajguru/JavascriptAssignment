@@ -22,7 +22,7 @@ namespace MatterAssignment.Services.Services
                     Id = j.Id,
                     JurisdictionName = j.JurisdictionName
                 });
-}
+        }
 
         public JurisdictionMasterDTO GetById(int id)
         {

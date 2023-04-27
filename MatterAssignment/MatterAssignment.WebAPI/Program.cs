@@ -33,7 +33,8 @@ builder.Services.AddScoped<IMatter, MatterService>();
 
 
 builder.Services.AddDbContext<MatterAssignmentDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
+
+options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 
 
 builder.Services.AddCors(options =>

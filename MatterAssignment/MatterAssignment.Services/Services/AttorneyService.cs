@@ -2,6 +2,7 @@
 using MatterAssignment.Data.Models;
 using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MatterAssignment.Services.Services
 {
@@ -14,24 +15,20 @@ namespace MatterAssignment.Services.Services
             _context = context;
         }
 
-        public IEnumerable<AttorneyDTO> GetAll()
+        public List<AttorneyWithIdDTO> GetAll()
         {
-            IEnumerable<AttorneyDTO> attorneys = _context.Attorneys
-                .Select(a => new AttorneyDTO
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Rate = a.Rate,
-                    JurisdictionId = a.JurisdictionId
-                })
-                .ToList();
-
-            return attorneys;
+            return _context.Attorneys.Select(a => new AttorneyWithIdDTO
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Rate = a.Rate,
+                JurisdictionId = a.JurisdictionId
+            }).ToList();
         }
 
         public AttorneyDTO GetById(int id)
         {
-            AttorneyDTO attorney = _context.Attorneys
+            AttorneyDTO? attorney = _context.Attorneys
                 .Where(a => a.Id == id)
                 .Select(a => new AttorneyDTO
                 {

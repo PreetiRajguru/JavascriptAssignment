@@ -1,6 +1,7 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MatterAssignment.WebAPI.Controllers
 {
@@ -15,42 +16,68 @@ namespace MatterAssignment.WebAPI.Controllers
             _clientService = clientService;
         }
 
-
-
+        // Controller method
         [HttpGet]
-        public IActionResult GetAll()
+        public ActionResult<IEnumerable<GetAllClientsResponse>> GetAllClients()
         {
-            IEnumerable<ClientDTO> clients = _clientService.GetAll();
-            return Ok(clients);
+            var clients = _clientService.GetAll();
+            var response = clients.Select(c => new GetAllClientsResponse
+            {
+                Id = c.Id,
+                FirstName = c.FirstName,
+                LastName = c.LastName,
+                PhoneNumber = c.PhoneNumber,
+                Email = c.Email,
+                Address = c.Address
+            });
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public ActionResult<GetClientByIdResponse> GetClientById(int id)
         {
-            ClientDTO client = _clientService.GetById(id);
-            if (client != null)
+            var client = _clientService.GetById(id);
+            var response = new GetClientByIdResponse
             {
-                return Ok(client);
-            }
-            return NotFound();
+                Id = client.Id,
+                Client = client
+            };
+            return Ok(response);
         }
 
         [HttpPost]
         public IActionResult Create(ClientDTO client)
         {
-            ClientDTO newClient = _clientService.Create(client);
-            return CreatedAtAction(nameof(GetById), new { id = newClient.Id }, newClient);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                ClientDTO newClient = _clientService.Create(client);
+                return CreatedAtAction(nameof(GetClientById), new { id = newClient.Id }, newClient);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (_clientService.Delete(id))
+            try
             {
-                return NoContent();
+                if (_clientService.Delete(id))
+                {
+                    return NoContent();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-
     }
 }

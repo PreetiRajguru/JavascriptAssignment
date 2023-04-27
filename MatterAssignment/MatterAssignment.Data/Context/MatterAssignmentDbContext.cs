@@ -20,8 +20,6 @@ namespace MatterAssignment.Data.Context
         public DbSet<JurisdictionMaster> JurisdictionMaster { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -65,7 +63,7 @@ namespace MatterAssignment.Data.Context
             modelBuilder.Entity<RoleMaster>()
                    .HasMany(e => e.AttorneyRoles)
                    .WithOne(e => e.RoleMaster)
-                   .HasForeignKey(e => e.AttorneyId)
+                   .HasForeignKey(e => e.RoleMasterId)
                    .IsRequired();
 
             modelBuilder.Entity<Matter>()
@@ -80,18 +78,17 @@ namespace MatterAssignment.Data.Context
                  .HasForeignKey(e => e.AttorneyId)
                  .IsRequired();
 
-            //one to one
             modelBuilder.Entity<JurisdictionMaster>()
-                    .HasOne(e => e.Attorney)
-                    .WithOne(e => e.Jurisdiction)
-                    .HasForeignKey<Attorney>(e => e.JurisdictionId)
-      .             IsRequired();
+                .HasMany(e => e.Attorneys)
+                .WithOne(e => e.Jurisdiction)
+                .HasForeignKey(e => e.JurisdictionId)
+                .IsRequired();
 
             modelBuilder.Entity<JurisdictionMaster>()
-                   .HasOne(e => e.Matter)
-                   .WithOne(e => e.Jurisdiction)
-                   .HasForeignKey<Matter>(e => e.JurisdictionId)
-                   .IsRequired();
+                  .HasMany(e => e.Matters)
+                  .WithOne(e => e.Jurisdiction)
+                  .HasForeignKey(e => e.JurisdictionId)
+                  .IsRequired();
         }
     }
 }

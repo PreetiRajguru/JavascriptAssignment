@@ -18,7 +18,7 @@ namespace MatterAssignment.Services.Services
 
         public IEnumerable<InvoiceDTO> GetAll()
         {
-            return _dbContext.Invoices.Select(i => new InvoiceDTO
+            var invoices = _dbContext.Invoices.Select(i => new InvoiceDTO
             {
                 Id = i.Id,
                 HoursWorked = i.HoursWorked,
@@ -27,26 +27,30 @@ namespace MatterAssignment.Services.Services
                 AttorneyId = i.AttorneyId,
                 MatterId = i.MatterId
             });
+            return invoices;
         }
 
-        public InvoiceDTO GetById(int id)
+        public InvoiceDTO[] GetById(int id)
         {
-            Invoice invoice = _dbContext.Invoices.FirstOrDefault(i => i.Id == id);
-            if (invoice == null) return null;
-            return new InvoiceDTO
-            {
-                Id = invoice.Id,
-                HoursWorked = invoice.HoursWorked,
-                TotalAmount = invoice.TotalAmount,
-                InvoiceDate = invoice.InvoiceDate,
-                AttorneyId = invoice.AttorneyId,
-                MatterId = invoice.MatterId
-            };
+            var invoices = _dbContext.Invoices
+                .Where(i => i.Id == id)
+                .Select(i => new InvoiceDTO
+                {
+                    Id = i.Id,
+                    HoursWorked = i.HoursWorked,
+                    TotalAmount = i.TotalAmount,
+                    InvoiceDate = i.InvoiceDate,
+                    AttorneyId = i.AttorneyId,
+                    MatterId = i.MatterId
+                })
+                .ToArray();
+
+            return invoices;
         }
 
         public void Create(InvoiceDTO invoice)
         {
-            decimal attorneyRate = _dbContext.Attorneys.Where(a => a.Id ==  invoice.AttorneyId).Select (  a => a.Rate).First();
+            decimal attorneyRate = _dbContext.Attorneys.Where(a => a.Id == invoice.AttorneyId).Select(a => a.Rate).First();
             Invoice newInvoice = new Invoice
             {
                 HoursWorked = invoice.HoursWorked,
@@ -68,33 +72,23 @@ namespace MatterAssignment.Services.Services
             _dbContext.SaveChanges();
         }
 
-        public InvoiceDTO GetInvoiceForMatter(int matterId)
+        public List<InvoiceForMatterDTO> GetInvoicesByMatterId(int matterId)
         {
-            using (MatterAssignmentDbContext dbContext = new MatterAssignmentDbContext())
+            IQueryable<Invoice> invoices = _dbContext.Invoices
+                .Include(i => i.Matter)
+                .Where(i => i.MatterId.Equals(matterId));
+
+            List<InvoiceForMatterDTO> invoiceMatter = new List<InvoiceForMatterDTO>();
+
+            foreach (var item in invoices)
             {
-                Invoice? invoice = dbContext.Invoices
-                    .Where(i => i.MatterId == matterId)
-                    .Include(i => i.Attorney)
-                    .FirstOrDefault();
-
-                if (invoice == null)
-                {
-                    return null;
-                }
-
-                InvoiceDTO invoiceDTO = new InvoiceDTO
-                {
-                    Id = invoice.Id,
-                    HoursWorked = invoice.HoursWorked,
-                    TotalAmount = invoice.TotalAmount,
-                    InvoiceDate = invoice.InvoiceDate,
-                    AttorneyId = invoice.Attorney.Id,
-                    MatterId = invoice.MatterId
-                };
-
-                return invoiceDTO;
+                var attorney = _dbContext.Attorneys.Where(s => s.Id == item.AttorneyId).FirstOrDefault();
+                invoiceMatter.Add(new InvoiceForMatterDTO { AttorneyName = attorney.Name, Id = item.Id });
             }
+
+            return invoiceMatter;
         }
+
 
         public IEnumerable<MatterInvoiceDTO> GetInvoicesByMatters()
         {

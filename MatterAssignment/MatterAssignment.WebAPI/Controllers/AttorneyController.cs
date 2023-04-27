@@ -18,7 +18,12 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            IEnumerable<AttorneyDTO> attorneys = _attorneyService.GetAll();
+            var attorneys = _attorneyService.GetAll();
+
+            if (attorneys == null || !attorneys.Any())
+            {
+                return NotFound();
+            }
 
             return Ok(attorneys);
         }
@@ -26,36 +31,60 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            AttorneyDTO attorney = _attorneyService.GetById(id);
-
-            if (attorney == null)
+            try
             {
-                return NotFound();
-            }
+                AttorneyDTO attorney = _attorneyService.GetById(id);
 
-            return Ok(attorney);
+                if (attorney == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(attorney);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] AttorneyDTO attorney)
         {
-            if (attorney == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
+            try
+            {
+                if (attorney == null)
+                {
+                    return BadRequest();
+                }
 
-            _attorneyService.Create(attorney);
+                _attorneyService.Create(attorney);
 
-            return CreatedAtRoute(nameof(GetById), new { id = attorney.Id }, attorney);
+                return CreatedAtRoute(nameof(GetById), new { id = attorney.Id }, attorney);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _attorneyService.Delete(id);
+            try
+            {
+                _attorneyService.Delete(id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
-
 }

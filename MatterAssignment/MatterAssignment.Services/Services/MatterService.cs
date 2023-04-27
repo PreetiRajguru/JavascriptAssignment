@@ -2,6 +2,7 @@
 using MatterAssignment.Data.Models;
 using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
+using MatterAssignment.Services.Mapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace MatterAssignment.Services.Services
@@ -78,23 +79,15 @@ namespace MatterAssignment.Services.Services
             }
         }
 
-        public IEnumerable<MatterDTO> GetMattersForClient(int clientId)
+        public List<MatterForClientDTO> GetMattersForClient(int clientId)
         {
-            IEnumerable<MatterDTO> matters = _context.Matters
-                .Where(m => m.ClientId == clientId)
-                .Select(m => new MatterDTO
-                {
-                    Id = m.Id,
-                    Title = m.Title,
-                    Description = m.Description,
-                    ClientId = m.ClientId,
-                    BillingAttorneyId = m.BillingAttorneyId,
-                    ResponsibleAttorneyId = m.ResponsibleAttorneyId,
-                    JurisdictionId = m.JurisdictionId
-                })
-                .ToList();
+            IQueryable<Matter> mattersByClient = _context.Matters
+            .Include(m => m.Attorney)
+            .Include(m => m.Jurisdiction)
+            .Include(m => m.Client)
+            .Where(c => c.ClientId.Equals(clientId));
 
-            return matters;
+            return mattersByClient.Select(c => new MattersForClientMapper().Map(c)).ToList();
         }
 
 

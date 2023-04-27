@@ -18,43 +18,72 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllJurisdictionMasters()
         {
-            IEnumerable<JurisdictionMasterDTO> jurisdictions = _jurisdictionMasterService.GetAll();
-
-            return Ok(jurisdictions);
+            try
+            {
+                IEnumerable<JurisdictionMasterDTO> jurisdictions = _jurisdictionMasterService.GetAll();
+                return Ok(jurisdictions);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving the jurisdictions.");
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetJurisdictionMasterById(int id)
         {
-            JurisdictionMasterDTO jurisdiction = _jurisdictionMasterService.GetById(id);
-
-            if (jurisdiction == null)
+            try
             {
-                return NotFound();
+                JurisdictionMasterDTO jurisdiction = _jurisdictionMasterService.GetById(id);
+                if (jurisdiction == null)
+                {
+                    return NotFound();
+                }
+                return Ok(jurisdiction);
             }
-
-            return Ok(jurisdiction);
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving the jurisdiction.");
+            }
         }
 
         [HttpPost]
         public IActionResult CreateJurisdictionMaster([FromBody] JurisdictionMasterDTO jurisdictionMaster)
         {
-            if (jurisdictionMaster == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
+            try
+            {
+                if (jurisdictionMaster == null)
+                {
+                    return BadRequest();
+                }
 
-            _jurisdictionMasterService.Create(jurisdictionMaster);
+                _jurisdictionMasterService.Create(jurisdictionMaster);
 
-            return CreatedAtRoute(nameof(GetJurisdictionMasterById), new { id = jurisdictionMaster.Id }, jurisdictionMaster);
+                return CreatedAtRoute(nameof(GetJurisdictionMasterById), new { id = jurisdictionMaster.Id }, jurisdictionMaster);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while creating the jurisdiction.");
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteJurisdictionMaster(int id)
         {
-            _jurisdictionMasterService.Delete(id);
+            try
+            {
+                _jurisdictionMasterService.Delete(id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while deleting the jurisdiction.");
+            }
         }
     }
 

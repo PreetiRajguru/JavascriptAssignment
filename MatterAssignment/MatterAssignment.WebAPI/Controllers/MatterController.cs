@@ -1,6 +1,8 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace MatterAssignment.WebAPI.Controllers
 {
@@ -18,63 +20,108 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllMatters()
         {
-            IEnumerable<MatterDTO> matters = _matterService.GetAll();
-            return Ok(matters);
+            try
+            {
+                IEnumerable<MatterDTO> matters = _matterService.GetAll();
+                return Ok(matters);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMatterById(int id)
         {
-            MatterDTO matter = _matterService.GetById(id);
-            if (matter == null)
+            try
             {
-                return NotFound();
-            }
+                MatterDTO matter = _matterService.GetById(id);
+                if (matter == null)
+                {
+                    return NotFound();
+                }
 
-            return Ok(matter);
+                return Ok(matter);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPost]
         public IActionResult CreateMatter(MatterDTO matterDto)
         {
-            if (matterDto == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
+            try
+            {
+                if (matterDto == null)
+                {
+                    return BadRequest();
+                }
 
-            MatterDTO createdMatter = _matterService.Create(matterDto);
-            return CreatedAtAction(nameof(GetMatterById), new { id = createdMatter.Id }, createdMatter);
+                MatterDTO createdMatter = _matterService.Create(matterDto);
+                return CreatedAtAction(nameof(GetMatterById), new { id = createdMatter.Id }, createdMatter);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteMatter(int id)
         {
-            _matterService.Delete(id);
-            return NoContent();
+            try
+            {
+                _matterService.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("client/{clientId}")]
         public IActionResult GetMattersForClient(int clientId)
         {
-            IEnumerable<MatterDTO> matters = _matterService.GetMattersForClient(clientId);
-
-            if (matters == null)
+            try
             {
-                return NotFound();
-            }
+                List<MatterForClientDTO> matters = _matterService.GetMattersForClient(clientId);
 
-            return Ok(matters);
+                if (matters == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(matters);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
 
         [HttpGet("client")]
         public IActionResult GetMattersByClients()
         {
-            IEnumerable<ClientMatterDTO> groupedMatters = _matterService.GetMattersByClients();
+            try
+            {
+                IEnumerable<ClientMatterDTO> groupedMatters = _matterService.GetMattersByClients();
 
-            return Ok(groupedMatters);
+                return Ok(groupedMatters);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
     }
-
 }

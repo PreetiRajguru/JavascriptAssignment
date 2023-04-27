@@ -6,15 +6,15 @@ namespace MatterAssignment.Services.Interfaces
     {
         IEnumerable<InvoiceDTO> GetAll();
 
-        InvoiceDTO GetById(int id);
+        InvoiceDTO[] GetById(int id);
 
         void Create(InvoiceDTO invoice);
 
         void Delete(int id);
 
-        InvoiceDTO GetInvoiceForMatter(int matterId);
+        List<InvoiceForMatterDTO> GetInvoicesByMatterId(int matterId);
 
-       IEnumerable<MatterInvoiceDTO> GetInvoicesByMatters();
+        IEnumerable<MatterInvoiceDTO> GetInvoicesByMatters();
 
         double GetBillingByAttorney(int attorneyId);
     }

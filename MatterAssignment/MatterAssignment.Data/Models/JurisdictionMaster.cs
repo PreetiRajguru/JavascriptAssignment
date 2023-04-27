@@ -8,9 +8,9 @@
 
         public bool IsDeleted { get; set; }
 
-        public Attorney Attorney { get; set; } = null!;
+        public ICollection<Attorney> Attorneys { get; set; }
 
-        public Matter Matter { get; set; }
+        public ICollection<Matter> Matters { get; set; }
 
     }
 }

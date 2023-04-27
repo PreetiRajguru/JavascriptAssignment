@@ -41,8 +41,7 @@ namespace MatterAssignment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JurisdictionId")
-                        .IsUnique();
+                    b.HasIndex("JurisdictionId");
 
                     b.ToTable("Attorneys");
                 });
@@ -66,6 +65,8 @@ namespace MatterAssignment.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AttorneyId");
+
+                    b.HasIndex("RoleMasterId");
 
                     b.ToTable("AttorneyRole");
                 });
@@ -191,8 +192,7 @@ namespace MatterAssignment.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("JurisdictionId")
-                        .IsUnique();
+                    b.HasIndex("JurisdictionId");
 
                     b.HasIndex("ResponsibleAttorneyId");
 
@@ -221,8 +221,8 @@ namespace MatterAssignment.Data.Migrations
             modelBuilder.Entity("MatterAssignment.Data.Models.Attorney", b =>
                 {
                     b.HasOne("MatterAssignment.Data.Models.JurisdictionMaster", "Jurisdiction")
-                        .WithOne("Attorney")
-                        .HasForeignKey("MatterAssignment.Data.Models.Attorney", "JurisdictionId")
+                        .WithMany("Attorneys")
+                        .HasForeignKey("JurisdictionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -239,7 +239,7 @@ namespace MatterAssignment.Data.Migrations
 
                     b.HasOne("MatterAssignment.Data.Models.RoleMaster", "RoleMaster")
                         .WithMany("AttorneyRoles")
-                        .HasForeignKey("AttorneyId")
+                        .HasForeignKey("RoleMasterId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -276,8 +276,8 @@ namespace MatterAssignment.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("MatterAssignment.Data.Models.JurisdictionMaster", "Jurisdiction")
-                        .WithOne("Matter")
-                        .HasForeignKey("MatterAssignment.Data.Models.Matter", "JurisdictionId")
+                        .WithMany("Matters")
+                        .HasForeignKey("JurisdictionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -310,11 +310,9 @@ namespace MatterAssignment.Data.Migrations
 
             modelBuilder.Entity("MatterAssignment.Data.Models.JurisdictionMaster", b =>
                 {
-                    b.Navigation("Attorney")
-                        .IsRequired();
+                    b.Navigation("Attorneys");
 
-                    b.Navigation("Matter")
-                        .IsRequired();
+                    b.Navigation("Matters");
                 });
 
             modelBuilder.Entity("MatterAssignment.Data.Models.Matter", b =>

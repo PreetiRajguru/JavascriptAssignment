@@ -17,7 +17,7 @@ namespace MatterAssignment.Services.Services
 
         public IEnumerable<ClientDTO> GetAll()
         {
-            return _dbContext.Clients.Select(c => new ClientDTO
+            var clients = _dbContext.Clients.Select(c => new ClientDTO
             {
                 Id = c.Id,
                 FirstName = c.FirstName,
@@ -26,25 +26,26 @@ namespace MatterAssignment.Services.Services
                 Email = c.Email,
                 Address = c.Address
             });
+            return clients;
         }
-
 
         public ClientDTO GetById(int id)
         {
-            Client client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);
-            if (client != null)
+            var client = _dbContext.Clients.SingleOrDefault(c => c.Id == id);
+            if (client == null)
             {
-                return new ClientDTO
-                {
-                    Id = client.Id,
-                    FirstName = client.FirstName,
-                    LastName = client.LastName,
-                    PhoneNumber = client.PhoneNumber,
-                    Email = client.Email,
-                    Address = client.Address
-                };
+                throw new DllNotFoundException($"Client with ID {id} not found.");
             }
-            return null;
+
+            return new ClientDTO
+            {
+                Id = client.Id,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+                PhoneNumber = client.PhoneNumber,
+                Email = client.Email,
+                Address = client.Address
+            };
         }
 
         public ClientDTO Create(ClientDTO client)
@@ -62,7 +63,7 @@ namespace MatterAssignment.Services.Services
             client.Id = newClient.Id;
             return client;
         }
-       
+
         public bool Delete(int id)
         {
             Client client = _dbContext.Clients.FirstOrDefault(c => c.Id == id);

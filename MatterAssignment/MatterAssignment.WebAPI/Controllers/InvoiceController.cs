@@ -16,69 +16,109 @@ namespace MatterAssignment.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<InvoiceDTO> GetAll()
+        public ActionResult<IEnumerable<InvoiceDTO>> GetAllInvoices()
         {
-            return _invoiceService.GetAll();
+            var invoices = _invoiceService.GetAll();
+            return Ok(invoices);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<InvoiceDTO> GetById(int id)
+        public ActionResult<InvoiceDTO[]> GetInvoicesById(int id)
         {
-            InvoiceDTO invoice = _invoiceService.GetById(id);
-            if (invoice == null) return NotFound();
-            return invoice;
+            var invoices = _invoiceService.GetById(id);
+
+            if (invoices.Length == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(invoices);
         }
 
         [HttpPost]
         public ActionResult<InvoiceDTO> Create(InvoiceDTO invoice)
         {
-            _invoiceService.Create(invoice);
-            return CreatedAtAction(nameof(GetById), new { id = invoice.Id }, invoice);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                _invoiceService.Create(invoice);
+                return CreatedAtAction(nameof(GetInvoicesById), new { id = invoice.Id }, invoice);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while creating the invoice. Error message: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _invoiceService.Delete(id);
-            return NoContent();
-        }
-
-
-        [HttpGet("matter/{matterId}")]
-        public ActionResult<InvoiceDTO> GetInvoiceForMatter(int matterId)
-        {
-            InvoiceDTO invoiceDto = _invoiceService.GetInvoiceForMatter(matterId);
-
-            if (invoiceDto == null)
+            try
             {
-                return NotFound();
+                _invoiceService.Delete(id);
+                return NoContent();
             }
-
-            return Ok(invoiceDto);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while deleting the invoice with ID {id}. Error message: {ex.Message}");
+            }
         }
 
+
+        [HttpGet("bymatterid/{id}")]
+        public IActionResult GetInvoicesByMatterId(int id)
+        {
+            try
+            {
+                List<InvoiceForMatterDTO> invoices = _invoiceService.GetInvoicesByMatterId(id);
+
+                if (invoices == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(invoices);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpGet("matter")]
         public IActionResult GetInvoicesByMatters()
         {
-            IEnumerable<MatterInvoiceDTO> groupedInvoices = _invoiceService.GetInvoicesByMatters();
-
-            return Ok(groupedInvoices);
+            try
+            {
+                var groupedInvoices = _invoiceService.GetInvoicesByMatters();
+                return Ok(groupedInvoices);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while retrieving the invoices by matters. Error message: {ex.Message}");
+            }
         }
 
 
         [HttpGet("billing/{attorneyId}")]
         public IActionResult GetBillingByAttorney(int attorneyId)
         {
-            double totalBilling = _invoiceService.GetBillingByAttorney(attorneyId);
-
-            if (totalBilling == null)
+            try
             {
-                return NotFound();
+                var totalBilling = _invoiceService.GetBillingByAttorney(attorneyId);
+                if (totalBilling == null)
+                {
+                    return NotFound();
+                }
+                return Ok(new { AttorneyId = attorneyId, Billing = totalBilling });
             }
-
-            return Ok(new { AttorneyId = attorneyId, Billing = totalBilling });
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while retrieving the billing for attorney with ID {attorneyId}. Error message: {ex.Message}");
+            }
         }
     }
 }
-

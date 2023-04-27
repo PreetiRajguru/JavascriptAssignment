@@ -1,6 +1,5 @@
 ﻿using MatterAssignment.Services.DTO;
 using MatterAssignment.Services.Interfaces;
-using MatterAssignment.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MatterAssignment.WebAPI.Controllers
@@ -20,36 +19,69 @@ namespace MatterAssignment.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var roles = _roleMasterService.GetAll();
-            return Ok(roles);
+            try
+            {
+                var roles = _roleMasterService.GetAll();
+                return Ok(roles);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var role = _roleMasterService.GetById(id);
-            if (role != null)
+            try
             {
-                return Ok(role);
+                var role = _roleMasterService.GetById(id);
+                if (role != null)
+                {
+                    return Ok(role);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
         public IActionResult Create(RoleMasterDTO role)
         {
-            var newRole = _roleMasterService.Create(role);
-            return CreatedAtAction(nameof(GetById), new { id = newRole.Id }, newRole);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var newRole = _roleMasterService.Create(role);
+                return CreatedAtAction(nameof(GetById), new { id = newRole.Id }, newRole);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (_roleMasterService.Delete(id))
+            try
             {
-                return NoContent();
+                if (_roleMasterService.Delete(id))
+                {
+                    return NoContent();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch
+            {
+                return StatusCode(500);
+            }
         }
     }
 }
